@@ -1,31 +1,43 @@
 import { useEffect, useState } from "react";
-import { Playlist, Track } from "../model/Playlist";
-import { findPlaylist } from "../service/SpotifyApiService";
-import "./Main.css"
+import { Playlist, Token, Track } from "../model/Playlist";
+import { findPlaylist, getToken } from "../service/SpotifyApiService";
+import ReactAudioPlayer from "react-audio-player";
+import "./Main.css";
 
 function Main() {
-    const [ playlist, setPlaylist ] = useState<Playlist>();
-    const [ track, setTrack ] = useState<Track>();
-    
-    useEffect(() => {
-        loadPlaylist();
-    }, []);
+  const [playlist, setPlaylist] = useState<Playlist | null>(null);
+  const [token, setToken] = useState<Token>();
 
-    function loadPlaylist() {
-        findPlaylist().then(PlaylistFromApi => {
-            setPlaylist(PlaylistFromApi);
-            console.log(PlaylistFromApi)
-          }); 
-    }
+  useEffect(() => {
+    // loadToken();
+    loadPlaylist();
+    console.log(getToken())
+  }, []);
+  
+//   function loadToken() {
+//     getToken().then((gotToken) => {
+//       setToken(gotToken);
+      
+//       console.log(token);
+//     });
+//   }
 
-    return (
+  function loadPlaylist() {
+    findPlaylist().then((PlaylistFromApi) => {
+      setPlaylist(PlaylistFromApi);
+      
+      console.log(PlaylistFromApi);
+    });
+  }
 
-        <div className="Main">
-            <h1>GAME</h1>
-            <p> {playlist?.name} </p>
-            <p> {track?.name} </p>
-        </div>
-    )
+  return (
+    <div className="Main">
+      <h1>GAME</h1>
+      <p> {playlist?.data.name} </p>
+      <p>  </p>
+      <ReactAudioPlayer src={playlist?.data.tracks.items[0].track.preview_url} controls />
+    </div>
+  );
 }
 
 export default Main;

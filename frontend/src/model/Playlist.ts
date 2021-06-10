@@ -1,4 +1,8 @@
 export  interface Playlist {
+    data: Data;
+}
+
+export  interface Data {
     name: string;
     id: string;
     images: []
@@ -27,4 +31,10 @@ export  interface Album {
 
 export  interface Artist {
     name:string
+}
+
+export interface Token {
+    access_token: string;
+    token_type: string;
+    expires_in: number;
 }
