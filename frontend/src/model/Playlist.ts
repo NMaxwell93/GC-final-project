@@ -33,7 +33,15 @@ export  interface Artist {
     name:string
 }
 
-export interface Token {
+export interface TokenPromise {
+    PromiseResult: PromiseResult;
+}
+
+export interface PromiseResult {
+    data: Data;
+}
+
+export interface Data {
     access_token: string;
     token_type: string;
     expires_in: number;

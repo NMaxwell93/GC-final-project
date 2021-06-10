@@ -1,5 +1,6 @@
 import axios from "axios";
-import { Playlist, Token } from "../model/Playlist";
+import { StringDecoder } from "string_decoder";
+import { Playlist, Data, PromiseResult, TokenPromise } from "../model/Playlist";
 
 // const baseUrl = process.env.SPOTIFY_APP_API_URL || "";
 // if (!baseUrl) {
@@ -13,7 +14,7 @@ import { Playlist, Token } from "../model/Playlist";
 const spotifyCredentials: string = process.env.REACT_APP_SPOTIFY_API_CREDENTIALS || "";
 const credentials = btoa(spotifyCredentials);
 
-export function getToken() {
+export function getToken(): Promise<PromiseResult> {
   const params = new URLSearchParams();
   params.append("grant_type", "client_credentials");
 
@@ -35,13 +36,13 @@ export function getToken() {
   //   });
 }
 
-export function findPlaylist(): Promise<Playlist> {
+export function findPlaylist(tokenid: any): Promise<Playlist> {
   return axios.get(
     "https://api.spotify.com/v1/playlists/5T5d1RHKEYGpm75Th6gFd8",
     {
       headers: {
         Authorization:
-          "Bearer BQDpU2YhbAH37L10pt4fhBgzAoINZM2VBsAO6bbZUBr0mw5Ns7KfvAHUZxk5gk8VmAk_IJCjg6pnb7GKeMQ",
+          `Bearer ${tokenid}`,
       },
     }
   );
