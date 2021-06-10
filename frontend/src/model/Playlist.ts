@@ -1,6 +1,8 @@
 export  interface Playlist {
     name: string;
+    id: string;
     images: []
+    tracks: Tracks;
 }
 
 export  interface Tracks {
