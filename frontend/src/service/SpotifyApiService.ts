@@ -36,7 +36,7 @@ export function getToken(): Promise<PromiseResult> {
   //   });
 }
 
-export function findPlaylist(playlistId:string): Promise<Data> {
+export function findPlaylist(playlistId:string): Promise<Playlist> {
   const accessTokenPromise = getToken().then(result => (result.data.access_token));
   return accessTokenPromise.then( accessToken => {
     return axios.get(
