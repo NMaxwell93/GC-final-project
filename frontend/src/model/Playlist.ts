@@ -5,12 +5,17 @@ export  interface Playlist {
 export  interface Data {
     name: string;
     id: string;
-    images: []
+    images: Images[]
     tracks: Tracks;
 }
 
+export interface Images {
+    url: string;
+}
+
 export  interface Tracks {
-    items: Items[] 
+    items: Items[];
+    total: number;
 }
 
 export  interface Items {
