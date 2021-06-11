@@ -36,11 +36,11 @@ export function getToken(): Promise<PromiseResult> {
   //   });
 }
 
-export function findPlaylist(): Promise<Playlist> {
+export function findPlaylist(playlistId:string): Promise<Data> {
   const accessTokenPromise = getToken().then(result => (result.data.access_token));
   return accessTokenPromise.then( accessToken => {
     return axios.get(
-      "https://api.spotify.com/v1/playlists/5T5d1RHKEYGpm75Th6gFd8",
+      `https://api.spotify.com/v1/playlists/${playlistId}`,
       {
         headers: {
           Authorization:
