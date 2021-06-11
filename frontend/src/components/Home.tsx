@@ -9,33 +9,20 @@ function Main() {
 
 
   useEffect(() => {
-    // loadToken();
     loadPlaylist();
-    // getToken();
-    // console.log(getToken());
-    // setToken(getToken());
   }, []);
   
-  // function loadToken() {
-  //   getToken().then(() => {
-  //     setToken(gotToken);
-      
-  //     console.log(token);
-  //   });
-  // }
 
   function loadPlaylist() {
-    const accessTokenPromise = getToken().then(result => (result.data.access_token));
-    accessTokenPromise.then( accessToken => findPlaylist(accessToken).then((PlaylistFromApi) => {
-      setPlaylist(PlaylistFromApi);
-      console.log(PlaylistFromApi);
-    }));
+    findPlaylist().then(playlistFromApi => {
+      setPlaylist(playlistFromApi);
+    });
   }
 
   return (
     <div className="Main">
       <h3>Home</h3>
-      <p> {playlist?.data.name} </p>
+      <button> {playlist?.data.name} </button>
       <p>  </p>
       {/* <ReactAudioPlayer src={playlist?.data.tracks.items[0].track.preview_url} controls /> */}
     </div>

@@ -36,17 +36,21 @@ export function getToken(): Promise<PromiseResult> {
   //   });
 }
 
-export function findPlaylist(tokenid: any): Promise<Playlist> {
-  return axios.get(
-    "https://api.spotify.com/v1/playlists/5T5d1RHKEYGpm75Th6gFd8",
-    {
-      headers: {
-        Authorization:
-          `Bearer ${tokenid}`,
-      },
-    }
-  );
+export function findPlaylist(): Promise<Playlist> {
+  const accessTokenPromise = getToken().then(result => (result.data.access_token));
+  return accessTokenPromise.then( accessToken => {
+    return axios.get(
+      "https://api.spotify.com/v1/playlists/5T5d1RHKEYGpm75Th6gFd8",
+      {
+        headers: {
+          Authorization:
+            `Bearer ${accessToken}`,
+        },
+      }
+    );
+  });
 }
+
 
 //  export const getAuth = async () => {
 //     const clientId = process.env.REACT_APP_BASIC_CLIENT_ID;
