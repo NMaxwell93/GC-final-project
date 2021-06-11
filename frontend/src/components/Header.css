@@ -1,0 +1,19 @@
+
+.Header {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.userIMG {
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid gray;
+}
+
+.Header_user {
+    font-size: .75em;
+}
+
+
