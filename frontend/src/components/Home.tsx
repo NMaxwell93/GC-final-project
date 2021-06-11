@@ -25,12 +25,11 @@ function Main() {
   // }
 
   function loadPlaylist() {
-    var accessToken = getToken().then(result => (result.data.access_token));
-    findPlaylist(accessToken.toString()).then((PlaylistFromApi) => {
+    const accessTokenPromise = getToken().then(result => (result.data.access_token));
+    accessTokenPromise.then( accessToken => findPlaylist(accessToken).then((PlaylistFromApi) => {
       setPlaylist(PlaylistFromApi);
-      
       console.log(PlaylistFromApi);
-    });
+    }));
   }
 
   return (
