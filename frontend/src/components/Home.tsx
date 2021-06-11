@@ -24,16 +24,8 @@ function Main() {
     <div className="Main">
       <h3>Choose your game!</h3>
       <Link to="/game/5T5d1RHKEYGpm75Th6gFd8">80's Playlist</Link>
-      {/* <form className="GameForm" onSubmit={handleSubmit}>
-        <button onClick={() => selectPlaylist()}> Playlist 1 </button>
-        <label><input type="radio" value="5T5d1RHKEYGpm75Th6gFd8" onChange={e => setPlaylist(e.target.value)}/>80s playlist button</label>
-        <button type="submit">Play Game!</button>
-      </form> */}
-      <div className="testDiv">
-        {/* { submittedPlaylist !== "" &&
-        <PlaylistDisplayTest playlistId={submittedPlaylist}/>
-        } */}
-      </div>
+      <Link to="/game/3RStcFzMl3qokh8cTzE1wK">90's Playlist</Link>
+
     </div>
   );
 }
