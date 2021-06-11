@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Data, Items, Playlist, Track } from "../model/Playlist";
+import { Playlist } from "../model/Playlist";
 import { findPlaylist } from "../service/SpotifyApiService";
+import AudioPlayer from "./AudioPlayer";
 import "./Game.css";
 
 
@@ -49,13 +50,7 @@ function Game() {
                 <div className="track-info">
                     <img className="artwork" src={gamePlaylist?.data.images[0].url} alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`} />
                     <button onClick={() => generateTrackIndex()}>Play Game</button>
-                    { playGame &&
-                        <div>
-                            <h2 className="title">{gamePlaylist?.data.tracks.items[trackNumber].track.name}</h2>
-                            <h3 className="artist">{gamePlaylist?.data.tracks.items[trackNumber].track.artists[0].name}</h3>
-                            <audio src={gamePlaylist?.data.tracks.items[trackNumber].track.preview_url} controls ></audio>
-                        </div>
-                    }
+                <AudioPlayer trackNumber={trackNumber} gamePlaylist={gamePlaylist!} />
                 </div>
             </div>
         </div>
