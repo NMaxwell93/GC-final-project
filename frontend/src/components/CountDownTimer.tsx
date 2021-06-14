@@ -37,9 +37,7 @@ const CountDownTimer = ({ hours = 0, minutes = 0, seconds = 60 }: ICountdown) =>
     
     return (
         <div>
-            <p>{`${time.hours.toString().padStart(2, '0')}:${time.minutes
-            .toString()
-            .padStart(2, '0')}:${time.seconds.toString().padStart(2, '0')}`}</p> 
+            <p>{time.seconds}</p> 
         </div>
     );
 }

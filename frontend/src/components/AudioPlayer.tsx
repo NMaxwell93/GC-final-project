@@ -1,25 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Playlist } from "../model/Playlist";
 import "./AudioPlayer.css";
-import CountDownTimer from "./CountDownTimer";
+
 
 interface Props {
-    trackNumber: number;
-    gamePlaylist: Playlist;
+  trackNumber: number;
+  gamePlaylist: Playlist;
+  nextTrack: () => void;
 }
 
-function AudioPlayer({ trackNumber, gamePlaylist }: Props) {
+function AudioPlayer({ trackNumber, gamePlaylist, nextTrack }: Props) {
+  const [time, setTime] = useState(10);
 
+  const reset = () => setTime(10);
+  
+  const tick = () => {
+    if (time === 0) {
+      reset();
+      nextTrack();
+    } else {
+      setTime(time - 1);
+    }
+  };
 
+  useEffect(() => {
+    const timerId = setInterval(() =>tick(), 1000);
+    return () => clearInterval(timerId);
+  });
 
-    return(
-        <div className="AudioPlayer">
-            <CountDownTimer hours={0} minutes={0} seconds={10}/>
-            <h2 className="title">{gamePlaylist?.data.tracks.items[trackNumber].track.name}</h2>
-            <h3 className="artist">{gamePlaylist?.data.tracks.items[trackNumber].track.artists[0].name}</h3>
-            <audio src={gamePlaylist?.data.tracks.items[trackNumber].track.preview_url} controls ></audio>
-        </div>
-    )
+  return (
+    <div className="AudioPlayer">
+      <h2 className="title">
+        {gamePlaylist?.data.tracks.items[trackNumber].track.name}
+      </h2>
+      <h3 className="artist">
+        {gamePlaylist?.data.tracks.items[trackNumber].track.artists[0].name}
+      </h3>
+      <button onClick={() => nextTrack()}>Next Track</button>
+      <p> {time} </p>
+      <audio src={gamePlaylist?.data.tracks.items[trackNumber].track.preview_url} controls ></audio>
+    </div>
+  );
 }
 
 export default AudioPlayer;

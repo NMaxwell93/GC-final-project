@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Playlist } from "../model/Playlist";
+import { Artist, Playlist } from "../model/Playlist";
 import { findPlaylist } from "../service/SpotifyApiService";
 import AudioPlayer from "./AudioPlayer";
 import "./Game.css";
@@ -15,6 +15,7 @@ function Game() {
     const [ gamePlaylist, setGamePlaylist ] = useState<Playlist>();
     const [ playGame, setPlayGame ]= useState(false);
     const [ trackNumber, setTrackNumber ]= useState(0);
+    const [ artistArray, setArtistArray] = useState<Artist[]>([]);
     
     // Loads playlist first
     useEffect(() => {
@@ -27,6 +28,7 @@ function Game() {
         findPlaylist(playlistId).then((results) => {
             // Stores API call results in state
             setGamePlaylist(results);
+            
             console.log(results)
         });
       }
@@ -35,9 +37,9 @@ function Game() {
     function generateTrackIndex() {
         setPlayGame(true);
         // var playListLength = gamePlaylist?.data.tracks.items.length;
-        setTrackNumber( Math.floor(Math.random() * 100));
+        setTrackNumber( Math.floor(Math.random() * 34));
         console.log(trackNumber);
-            return trackNumber;
+        return trackNumber;
       }
 
     return (
@@ -50,7 +52,7 @@ function Game() {
                 <div className="track-info">
                     <img className="artwork" src={gamePlaylist?.data.images[0].url} alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`} />
                     <button onClick={() => generateTrackIndex()}>Play Game</button>
-                <AudioPlayer trackNumber={trackNumber} gamePlaylist={gamePlaylist!} />
+                <AudioPlayer trackNumber={trackNumber} gamePlaylist={gamePlaylist!} nextTrack={() => generateTrackIndex()} />
                 </div>
             </div>
         </div>

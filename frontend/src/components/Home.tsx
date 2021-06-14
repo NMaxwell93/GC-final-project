@@ -15,7 +15,7 @@ function Home() {
         <Link to="/game/3RStcFzMl3qokh8cTzE1wK">90's Playlist</Link>
       </div>
       <div className="aughts">
-        <Link to="/game/5ytiKjhwdNp0zjRPHB7opA">00's Playlist</Link>
+        <Link to="/game/20924Ice6nj3fi9GBX1Nkl">00's Playlist</Link>
       </div>
       <div className="twentytens">
         <Link to="/game/7BEk3inUCfgSfuHI2KwtBc">2010's Playlist</Link>
