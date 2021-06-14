@@ -16,6 +16,7 @@ function Game() {
     const [ playGame, setPlayGame ]= useState(false);
     const [ trackNumber, setTrackNumber ]= useState(0);
     const [ artistArray, setArtistArray] = useState([""]);
+    const [choices, setChoices] = useState([""]);
     
     // Loads playlist first
     useEffect(() => {
@@ -29,8 +30,6 @@ function Game() {
             // Stores API call results in state
             setGamePlaylist(results);
             
-            console.log(results)
-            console.log(results.data.tracks.items)
             for (let artist of results.data.tracks.items) {
                 artistArray.push(artist.track.artists[0].name)
             }
@@ -43,7 +42,11 @@ function Game() {
         setPlayGame(true);
         // var playListLength = gamePlaylist?.data.tracks.items.length;
         setTrackNumber( Math.floor(Math.random() * 34));
-        console.log(trackNumber);
+        choices.push(artistArray[trackNumber]);
+        for (let i = 0; i <= 2; i++) {
+            choices.push(artistArray[Math.floor(Math.random() * artistArray.length) + 1])
+        }
+    console.log(choices);
         return trackNumber;
       }
 
@@ -57,7 +60,7 @@ function Game() {
                 <div className="track-info">
                     <img className="artwork" src={gamePlaylist?.data.images[0].url} alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`} />
                     <button onClick={() => generateTrackIndex()}>Play Game</button>
-                <AudioPlayer trackNumber={trackNumber} gamePlaylist={gamePlaylist!} nextTrack={() => generateTrackIndex()} />
+                <AudioPlayer trackNumber={trackNumber} gamePlaylist={gamePlaylist!} nextTrack={() => generateTrackIndex()} choices={choices} />
                 </div>
             </div>
         </div>
