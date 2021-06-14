@@ -15,7 +15,7 @@ function Game() {
     const [ gamePlaylist, setGamePlaylist ] = useState<Playlist>();
     const [ playGame, setPlayGame ]= useState(false);
     const [ trackNumber, setTrackNumber ]= useState(0);
-    const [ artistArray, setArtistArray] = useState<Artist[]>([]);
+    const [ artistArray, setArtistArray] = useState([""]);
     
     // Loads playlist first
     useEffect(() => {
@@ -30,6 +30,11 @@ function Game() {
             setGamePlaylist(results);
             
             console.log(results)
+            console.log(results.data.tracks.items)
+            for (let artist of results.data.tracks.items) {
+                artistArray.push(artist.track.artists[0].name)
+            }
+            console.log(artistArray)
         });
       }
 
