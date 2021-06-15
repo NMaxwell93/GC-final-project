@@ -15,8 +15,8 @@ function Game() {
     const [ gamePlaylist, setGamePlaylist ] = useState<Playlist>();
     const [ playGame, setPlayGame ]= useState(false);
     const [ trackNumber, setTrackNumber ]= useState(0);
-    const [ artistArray, setArtistArray] = useState([""]);
-    const [choices, setChoices] = useState([""]);
+    const [ artistArray, setArtistArray] = useState<string[]>([]);
+    const [choices, setChoices] = useState<string[]>([]);
     
     // Loads playlist first
     useEffect(() => {
@@ -29,11 +29,12 @@ function Game() {
         findPlaylist(playlistId).then((results) => {
             // Stores API call results in state
             setGamePlaylist(results);
-            
+            const newArtistArray = [];
             for (let artist of results.data.tracks.items) {
-                artistArray.push(artist.track.artists[0].name)
+                newArtistArray.push(artist.track.artists[0].name)
             }
-            console.log(artistArray)
+            console.log(newArtistArray);
+            setArtistArray(newArtistArray);
         });
       }
 
@@ -42,6 +43,7 @@ function Game() {
         setPlayGame(true);
         // var playListLength = gamePlaylist?.data.tracks.items.length;
         setTrackNumber( Math.floor(Math.random() * 34));
+        // First filter array (take out correct answer), then shuffle, then pick first 3 choices (using slice?)
         choices.push(artistArray[trackNumber]);
         for (let i = 0; i <= 2; i++) {
             choices.push(artistArray[Math.floor(Math.random() * artistArray.length) + 1])
