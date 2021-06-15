@@ -43,12 +43,7 @@ function AudioPlayer({ trackNumber, gamePlaylist, nextTrack, choices }: Props) {
       <button onClick={() => nextTrack()}>Next Track</button>
       <p> {time} </p>
       <audio src={gamePlaylist?.data.tracks.items[trackNumber].track.preview_url} controls ></audio>
-      <div className="ArtistChoices">
-          <button>{choices[1]}</button>
-          <button>{choices[2]}</button>
-          <button>{choices[3]}</button>
-          <button>{choices[4]}</button>
-      </div>
+
     </div>
 
   );
