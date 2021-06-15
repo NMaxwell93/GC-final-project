@@ -11,10 +11,10 @@ interface Props {
 }
 
 function AudioPlayer({ trackNumber, gamePlaylist, nextTrack, choices }: Props) {
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(4);
 
   const reset = () => {
-      setTime(10);
+      setTime(4);
   }
   
   const tick = () => {
