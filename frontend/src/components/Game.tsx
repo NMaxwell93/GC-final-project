@@ -1,7 +1,7 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import _ from "lodash";
-import { Artist, Playlist } from "../model/Playlist";
+import { Playlist } from "../model/Playlist";
 import { findPlaylist } from "../service/SpotifyApiService";
 import AudioPlayer from "./AudioPlayer";
 import "./Game.css";
@@ -19,6 +19,25 @@ function Game() {
   const [choices, setChoices] = useState<string[]>([]);
   const [playedCount, setPlayedCount] = useState(1);
   const [score, setScore] = useState(0);
+  const [time, setTime] = useState(4);
+
+  const reset = () => {
+      setTime(4);
+  }
+  
+  const tick = () => {
+    if (time === 0) {
+      reset();
+      generateTrackIndex();
+    } else {
+      setTime(time - 1);
+    }
+  };
+
+  useEffect(() => {
+    const timerId = setInterval(() =>tick(), 1000);
+    return () => clearInterval(timerId);
+  });
 
   // Loads playlist first
   useEffect(() => {
@@ -92,16 +111,16 @@ function Game() {
           <div className="audio-player">
             <div className="track-info">
               <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
-
-              <AudioPlayer trackNumber={trackNumber}gamePlaylist={gamePlaylist!}nextTrack={() => generateTrackIndex()}choices={choices}/>
+                <p>{time}</p>
+              <AudioPlayer trackNumber={trackNumber}gamePlaylist={gamePlaylist!} choices={choices}/>
               <p> Youre score!!!!:::!!!{score} </p>
             </div>
           </div>
           <div className="ArtistChoices">
-            <button onClick={() => {checkAnswer(0);generateTrackIndex();}}>{choices[0]}</button>
-            <button onClick={() => {checkAnswer(1);generateTrackIndex();}}>{choices[1]}</button>
-            <button onClick={() => {checkAnswer(2);generateTrackIndex();}}>{choices[2]}</button>
-            <button onClick={() => {checkAnswer(3);generateTrackIndex();}}>{choices[3]}</button>
+            <button onClick={() => {checkAnswer(0);generateTrackIndex(); reset();}}>{choices[0]}</button>
+            <button onClick={() => {checkAnswer(1);generateTrackIndex(); reset();}}>{choices[1]}</button>
+            <button onClick={() => {checkAnswer(2);generateTrackIndex(); reset();}}>{choices[2]}</button>
+            <button onClick={() => {checkAnswer(3);generateTrackIndex(); reset();}}>{choices[3]}</button>
           </div>
         </div>
       )}
