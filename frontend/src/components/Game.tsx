@@ -22,7 +22,6 @@ function Game() {
     // Loads playlist first
     useEffect(() => {
         loadPlaylist();
-        // generateTrackIndex();
       }, [playlistId]);
     
     // Function that runs API call 
@@ -43,14 +42,18 @@ function Game() {
 
     // Creates random number for index for song in track array
     function generateTrackIndex() {
-        if (gamePlaylist === null){
+        setPlayGame(true);
+        let updateTrackNumber = ( Math.floor(Math.random() * 34));
+        setTrackNumber(updateTrackNumber);
+        generateChoices(updateTrackNumber);
+    }
+
+    function generateChoices(trackNumber: number) {
+        if (gamePlaylist === null || trackNumber === -1 ){
             return;
         }
-        setPlayGame(true);
-        // var playListLength = gamePlaylist?.data.tracks.items.length;
-        setTrackNumber( Math.floor(Math.random() * 34));
-        // First filter array (take out correct answer), then shuffle, then pick first 3 choices (using slice?)
-        let newChoiceArray :string[]= [];
+
+        let newChoiceArray: string[]= [];
         newChoiceArray.push(gamePlaylist.data.tracks.items[trackNumber].track.artists[0].name);
         let filteredArtistArray = artistArray.filter(artist => artist !== gamePlaylist?.data.tracks.items[trackNumber].track.artists[0].name);
         filteredArtistArray = _.shuffle(filteredArtistArray);
@@ -61,8 +64,8 @@ function Game() {
 
         setChoices(newChoiceArray);
         console.log(newChoiceArray);
-
     }
+
 
     return (
         <div className="Game">
@@ -74,23 +77,24 @@ function Game() {
             {gamePlaylist?.data.name}
             
             {
-            trackNumber > -1 && <div> 
-            <div className="audio-player">
-                <div className="track-info">
+            trackNumber > -1 && 
+            <div> 
+                <div className="audio-player">
+                    <div className="track-info">
                     <img className="artwork" src={gamePlaylist?.data.images[0].url} alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`} />
 
                 <AudioPlayer trackNumber={trackNumber} gamePlaylist={gamePlaylist!} nextTrack={() => generateTrackIndex()} choices={choices} />
                 </div>
             </div>
-        <div className="ArtistChoices">
-          <button>{choices[1]}</button>
-          <button>{choices[2]}</button>
-          <button>{choices[3]}</button>
-          <button>{choices[4]}</button>
-        </div>
-        
-        </div>
-        }
+            <div className="ArtistChoices">
+            <button>{choices[0]}</button>
+            <button>{choices[1]}</button>
+            <button>{choices[2]}</button>
+            <button>{choices[3]}</button>
+            </div>
+            
+            </div>
+            }
         </div>
     )
 }
