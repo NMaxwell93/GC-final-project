@@ -9,7 +9,7 @@ function Leaderboard() {
 
     useEffect(() => {
         loadLeaderboard();
-    })
+    },[])
 
     function loadLeaderboard() {
         topFive().then(topFiveApi => {
