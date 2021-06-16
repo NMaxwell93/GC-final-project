@@ -1,14 +1,16 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/auth-context";
 import { signInWithGoogle, signOut } from "../firebaseConfig";
+import logo from '../assets/logo.svg'
 import "./Header.css"
+
 
 function Header() {
     const { user } = useContext(AuthContext)
 
     return (
         <div className="Header">
-            <h1>Quick Click</h1>
+            <img src={logo} alt="logo"></img>
             { user && 
                     <div className="Header_user">
                         { !!user.photoURL && <img className="userIMG" src={user.photoURL} alt="" />}
@@ -18,7 +20,7 @@ function Header() {
                 }
             {
                 !user ? 
-                    <button onClick={signInWithGoogle} >Sign in with Google</button>
+                    <button className="google" onClick={signInWithGoogle} >Login</button>
                 :
                     <button onClick={signOut} >Sign out</button>
             }

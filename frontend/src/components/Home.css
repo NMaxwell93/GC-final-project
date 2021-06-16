@@ -1,0 +1,29 @@
+body{
+
+}
+
+.Home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+.eighties{
+
+}
+
+.twentytens{
+
+}
+
+
+
+
+a:link{
+    color: white;
+}
+a:visited{
+    color: white;
+}
