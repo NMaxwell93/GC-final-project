@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react';
-import Game from '../model/Game';
+import {Game} from '../model/Game';
 import { createGame } from '../service/MongoService';
 import './PostGame.css';
 import { AuthContext } from "../context/auth-context";

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import "./Home.css";
+import Leaderboard from './Leaderboard';
 
 
 function Home() {
@@ -20,6 +21,7 @@ function Home() {
       <div className="twentytens">
         <Link to="/game/7BEk3inUCfgSfuHI2KwtBc">2010's Playlist</Link>
       </div>
+      <Leaderboard/>
     </div>
   );
 }
