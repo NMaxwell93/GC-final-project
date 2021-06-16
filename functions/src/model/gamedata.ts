@@ -22,3 +22,17 @@ export  interface TopFiveUsers {
     total: number;
     displayName: string;
 }
+
+export interface TopFiveEighties {
+    _id?: ObjectId;
+    total: number;
+    playlist: string;
+    displayName: string;
+}
+
+export interface TopFiveByPlaylist {
+    _id?: ObjectId;
+    total: number;
+    playlist: string;
+    displayName: string;
+}

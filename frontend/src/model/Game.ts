@@ -12,3 +12,10 @@ export  interface TopFiveUsers {
     total: number;
     displayName: string;
 }
+
+export interface TopFiveByPlaylist {
+    _id?: string;
+    total: number;
+    playlist: string;
+    displayName: string;
+}
