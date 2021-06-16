@@ -22,7 +22,7 @@ function Home() {
       <div className="twentytens">
         <button><NavLink to="/game/7BEk3inUCfgSfuHI2KwtBc">2010's Playlist</NavLink></button>
       </div>
-      <Leaderboard/>
+      {/* <Leaderboard/> */}
       </div>
     </div>
   );
