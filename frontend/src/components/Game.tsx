@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import _ from "lodash";
 import { Playlist } from "../model/Playlist";
 import { findPlaylist } from "../service/SpotifyApiService";
@@ -106,7 +106,7 @@ function Game() {
   return (
     <div className="Game">
       <div className="Home">
-        <Link to="/">Home</Link>
+        <NavLink to="/">Home</NavLink>
       </div>
       <button onClick={() => generateTrackIndex()}>Play Game</button>
 
@@ -119,7 +119,7 @@ function Game() {
               <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
                 <p>{time}</p>
               <AudioPlayer trackNumber={trackNumber}gamePlaylist={gamePlaylist!} choices={choices}/>
-              <p> Youre score!!!!:::!!!{score} </p>
+              <p> Score: {score} </p>
             </div>
           </div>
           <div className="ArtistChoices">
