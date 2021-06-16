@@ -7,7 +7,7 @@
     font-family: 'Montserrat', sans-serif;
     background-color: #F2542D;
     color: white;
-    border-radius: 15%;
+    border-radius: 10%;
     padding:5px;
     height: 80px;
     width: 150px;
@@ -20,10 +20,12 @@
 
 .audio-player{
     display: flex;
-    height: 400px;
-    width: 400px;
+    height: 500px;
+    width: 500px;
     flex-direction: column;
-    align-items: center;
+    align-items: auto;
+    justify-content: center;
+
 }
 
 .artwork{
@@ -45,21 +47,22 @@
     font-family: 'Montserrat', sans-serif;
     background-color: #F2542D;
     color: white;
-    border-radius: 15%;
+    border-radius: 10%;
     padding:5px;
     height: 60px;
-    width: 90px;
+    width: 110px;
     margin: 3px;
     outline: 0;
     text-transform: uppercase;
     font-size: .85em;
+    /* position: relative; */
 }
 
 button{
     font-family: 'Montserrat', sans-serif;
     background-color: #F2542D;
     color: #F5DFBB;
-    border-radius: 15%;
+    border-radius: 10%;
     padding:5px;
     height: 50px;
     width: 90px;
