@@ -55,15 +55,16 @@ app.get("/", async (req, res) => {
   });
 
 // top score by user and playlist
-app.get("/leaderboard/:playlist", async (req, res) => {
-  const playlist = req.params.playlist
+app.get("/leaderboard/:playlistId", async (req, res) => {
+  const playlistId = req.params.playlistId
   try {
     const client = await getClient();
     const game = await client.db().collection<TopFiveByPlaylist>('gameData').aggregate([
       {$group: {
         _id: {
-          playlist: `${playlist}`,
-          userName: "$user_displayName"
+          playlistId: `${playlistId}`,
+          userName: "$user_displayName",
+          score: "$score"
         },
         total: {$sum: "$score"}
       }},

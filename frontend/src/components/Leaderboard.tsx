@@ -18,6 +18,7 @@ function Leaderboard() {
     function loadPlaylistLeaderboard(playlistName:string) {
         getTopFiveByPlaylist(playlistName).then(topFivePlaylist => {
             setSelectedLeaderboard(topFivePlaylist)
+            console.log(selectedLeaderboard)
         })
         setTopFiveUsers([]);
     }
@@ -31,7 +32,7 @@ function Leaderboard() {
     
     return (
         <div className="Leaderboard">
-            <button onClick={() => loadPlaylistLeaderboard("This Is: The 80\'s")}>80's Playlist</button>
+            <button onClick={() => loadPlaylistLeaderboard("3sfMNERLMuy8QQXb20RywT")}>80's Playlist</button>
             <button>80's Playlist</button>
             <button>80's Playlist</button>
             <button>80's Playlist</button>
