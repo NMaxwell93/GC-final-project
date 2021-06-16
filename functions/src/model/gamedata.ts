@@ -1,9 +1,9 @@
 import { ObjectId } from "mongodb";
 
-export interface Games {
+export interface Game {
     _id?: ObjectId;
     username: string;
-    category: string;
+    playlist: string;
     score: number;
 }
 
@@ -11,7 +11,7 @@ export interface UserInfo{
     _id?: ObjectId;
     username: string;
     GameInfo: [{
-        category:string;
+        playlist: string;
         score: number;
     }]
 }

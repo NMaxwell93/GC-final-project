@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import _ from "lodash";
 import { Playlist } from "../model/Playlist";
@@ -6,12 +6,14 @@ import { findPlaylist } from "../service/SpotifyApiService";
 import AudioPlayer from "./AudioPlayer";
 import "./Game.css";
 import PostGame from "./PostGame";
+import { AuthContext } from "../context/auth-context";
 
 interface RouteParams {
   playlistId: string;
 }
 
 function Game() {
+  const { user } = useContext(AuthContext)
   const { playlistId } = useParams<RouteParams>();
   const [gamePlaylist, setGamePlaylist] = useState<Playlist | null>(null);
   const [playGame, setPlayGame] = useState(false);
@@ -27,6 +29,9 @@ function Game() {
   }
   
   const tick = () => {
+    if (playedCount > 11) {
+      return;
+    }
     if (time === 0) {
       reset();
       generateTrackIndex();
@@ -126,7 +131,7 @@ function Game() {
         </div>
       )}
       {playedCount > 11 && 
-        <PostGame score = {score}/>
+        <PostGame score={score} playlist={gamePlaylist!.data.name} />
 
       }
     </div>
