@@ -6,14 +6,12 @@ import { findPlaylist } from "../service/SpotifyApiService";
 import AudioPlayer from "./AudioPlayer";
 import "./Game.css";
 import PostGame from "./PostGame";
-import { AuthContext } from "../context/auth-context";
 
 interface RouteParams {
   playlistId: string;
 }
 
 function Game() {
-  const { user } = useContext(AuthContext)
   const { playlistId } = useParams<RouteParams>();
   const [gamePlaylist, setGamePlaylist] = useState<Playlist | null>(null);
   const [playGame, setPlayGame] = useState(false);
@@ -42,7 +40,7 @@ function Game() {
 
   useEffect(() => {
     if (playGame === true) {
-    const timerId = setInterval(() =>tick(), 1000);
+    const timerId = setInterval(() => tick(), 1000);
     return () => clearInterval(timerId);
     }
   });
@@ -55,6 +53,8 @@ function Game() {
   // Function that runs API call
   function loadPlaylist() {
     findPlaylist(playlistId).then((results) => {
+      let filteredPlaylistArray = results.data.tracks.items.filter(song => song.track.preview_url !== null);
+      results.data.tracks.items = filteredPlaylistArray
       // Stores API call results in state
       setGamePlaylist(results);
       const newArtistArray = [];
@@ -68,7 +68,8 @@ function Game() {
   // Creates random number for index for song in track array
   function generateTrackIndex() {
     setPlayGame(true);
-    let updateTrackNumber = Math.floor(Math.random() * 34);
+    let updateTrackNumber = Math.floor(Math.random() * gamePlaylist!.data.tracks.items.length);
+    console.log(gamePlaylist!.data.tracks.items.length);
     setTrackNumber(updateTrackNumber);
     generateChoices(updateTrackNumber);
     setPlayedCount(prev => prev + 1);

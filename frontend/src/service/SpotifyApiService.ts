@@ -1,15 +1,6 @@
 import axios from "axios";
-import { StringDecoder } from "string_decoder";
-import { Playlist, Data, PromiseResult, TokenPromise } from "../model/Playlist";
+import { Playlist, PromiseResult } from "../model/Playlist";
 
-// const baseUrl = process.env.SPOTIFY_APP_API_URL || "";
-// if (!baseUrl) {
-//   console.error("SPOTIFY_APP_API_URL environment variable not set.");
-// }
-
-// export function findPlaylist():Promise<Playlist> {
-//     return axios.get(`${baseUrl}5T5d1RHKEYGpm75Th6gFd8`).then(res => res.data);
-//   }
 
 const spotifyCredentials: string = process.env.REACT_APP_SPOTIFY_API_CREDENTIALS || "";
 const credentials = btoa(spotifyCredentials);
