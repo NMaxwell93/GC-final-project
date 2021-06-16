@@ -11,6 +11,7 @@ app.use(cors());
 
 app.use(express.json());
 
+//all the data
 app.get("/", async (req, res) => {
     try {
       const client = await getClient();
@@ -24,8 +25,7 @@ app.get("/", async (req, res) => {
     }
   });
 
-  //Best overall scores, top 5
-
+//Best overall scores, top 5
   app.get("/leaderboard", async (req, res) => {
     try {
       const client = await getClient();
@@ -54,7 +54,9 @@ app.get("/", async (req, res) => {
     }
   });
 
-  // Adding new instance of game
+
+
+// Adding new instance of game
   app.post("/", async (req, res) => {
     const game = req.body as Game;
     try {

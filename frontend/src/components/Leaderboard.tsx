@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import {Game, TopFiveUsers} from "../model/Game";
+import {TopFiveUsers} from "../model/Game";
 import { topFive } from "../service/MongoService";
 import "./Leaderboard.css";
 
@@ -9,11 +9,11 @@ function Leaderboard() {
 
     useEffect(() => {
         loadLeaderboard();
-    })
+    },[])
 
     function loadLeaderboard() {
         topFive().then(topFiveApi => {
-            setTopFiveUsers(topFiveApi);
+        setTopFiveUsers(topFiveApi);
         })
     }
     
