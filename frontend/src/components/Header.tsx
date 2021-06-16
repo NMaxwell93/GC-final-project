@@ -3,6 +3,7 @@ import { AuthContext } from "../context/auth-context";
 import { signInWithGoogle, signOut } from "../firebaseConfig";
 import logo from '../assets/logo.svg'
 import "./Header.css"
+import {NavLink} from 'react-router-dom'
 
 
 function Header() {
@@ -10,7 +11,7 @@ function Header() {
 
     return (
         <div className="Header">
-            <img src={logo} alt="logo"></img>
+            <NavLink to="/"><img src={logo} alt="logo"></img></NavLink>
             { user && 
                     <div className="Header_user">
                         { !!user.photoURL && <img className="userIMG" src={user.photoURL} alt="" />}

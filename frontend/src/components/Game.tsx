@@ -41,8 +41,10 @@ function Game() {
   };
 
   useEffect(() => {
+    if (playGame === true) {
     const timerId = setInterval(() =>tick(), 1000);
     return () => clearInterval(timerId);
+    }
   });
 
   // Loads playlist first
