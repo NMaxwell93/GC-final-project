@@ -107,13 +107,11 @@ function Game() {
 
   return (
     <div className="Game">
-      <div className="Home">
-        <NavLink to="/">Home</NavLink>
-      </div>
-      <button onClick={() => generateTrackIndex()}>Play Game</button>
 
       {gamePlaylist?.data.name}
-
+      { 
+      <button onClick={() => generateTrackIndex()}>Play Game</button>
+      }
       {trackNumber > -1 && playedCount <= 11 && (
         <div>
           <div className="audio-player">

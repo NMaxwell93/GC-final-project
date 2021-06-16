@@ -10,12 +10,21 @@ body{
     flex-wrap: wrap;
 }
 
-.eighties{
+.eighties button{
+    background-color: #562C2C;
 
 }
 
-.twentytens{
+.nineties button{
 
+}
+
+.aughts button{
+ background-color: #f6c663;
+}
+
+.twentytens button{
+    background-color:#0b3347;
 }
 
 
@@ -23,7 +32,9 @@ body{
 
 a:link{
     color: white;
+    text-decoration: none;
 }
 a:visited{
     color: white;
+    text-decoration: none;
 }
