@@ -29,7 +29,7 @@ function PostGame({score, playlist}: Props) {
 
     return(
         <div className="PostGame">
-            <p>{score}</p>
+            <p>You got {score} out of 10!</p>
         </div>
     )
 }

@@ -1,6 +1,3 @@
-body{
-
-}
 
 .Home{
     display: flex;
@@ -10,20 +7,80 @@ body{
     flex-wrap: wrap;
 }
 
-.eighties{
+.eighties button{
+    background-color: #562C2C;
 
 }
 
-.twentytens{
+.nineties button{
 
 }
 
+.aughts button{
+ background-color: #f6c663;
+}
 
+.twentytens button{
+    background-color:#0b3347;
+}
 
 
 a:link{
     color: white;
+    text-decoration: none;
 }
 a:visited{
     color: white;
+    text-decoration: none;
+}
+
+@media screen and (min-width: 768px){
+
+    .Home{
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .playlistButtons{
+        display: flex;
+    }
+
+    .eighties button{
+        padding:5px;
+        height: 80px;
+        width: 150px;
+        margin: 3px;
+        border-radius: 15px;
+        font-size: 1.25em;
+    }
+    
+    .nineties button{
+        padding:5px;
+        height: 80px;
+        width: 150px;
+        margin: 3px;
+        border-radius: 15px;
+        font-size: 1.25em;    
+    }
+    
+    .aughts button{
+        padding:5px;
+        height: 80px;
+        width: 150px;
+        margin: 3px;
+        border-radius: 15px;
+        font-size: 1.25em;
+    }
+    
+    .twentytens button{
+        padding:5px;
+        height: 80px;
+        width: 150px;
+        margin: 3px;
+        border-radius: 15px;
+        font-size: 1.25em;
+    }
+
 }
