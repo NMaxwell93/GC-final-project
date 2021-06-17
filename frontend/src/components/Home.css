@@ -7,6 +7,12 @@
     flex-wrap: wrap;
 }
 
+.fifties button {
+    background: url(../assets/50s-logo.svg);
+    color: transparent;
+    height: 100px;
+    width: 100px;
+}
 
 .sixties button {
     background: url(../assets/60s-logo-1.svg);
@@ -36,6 +42,28 @@
     width: 100px;
 }
 
+.twothousands button {
+    background: url(../assets/00s-logo.svg);
+    color: transparent;
+    height: 100px;
+    width: 100px;
+}
+
+.twothousandten button {
+    background: url(../assets/10s-logo.svg);
+    color: transparent;
+    height: 100px;
+    width: 100px;
+}
+
+.twentytwenty button {
+    background: url(../assets/20s-logo.svg);
+    color: transparent;
+    height: 100px;
+    width: 100px;
+}
+
+
 
 a:link {
     color: white;
@@ -61,6 +89,13 @@ button {
 
     .playlistButtons {
         display: flex;
+    }
+
+    .fifties button {
+        background: url(../assets/50s-logo.svg);
+        color: transparent;
+        height: 150px;
+        width: 150px;
     }
 
     .sixties button {
@@ -111,22 +146,27 @@ button {
         cursor: pointer;
     }
     
-    .aughts button {
-        padding:5px;
-        height: 80px;
+    .twothousands button {
+        background: url(../assets/00s-logo.svg);
+        color: transparent;
+        height: 150px;
         width: 150px;
-        margin: 3px;
-        border-radius: 15px;
-        font-size: 1.25em;
     }
     
-    .twentytens button {
-        padding:5px;
-        height: 80px;
+    .twothousandten button {
+        background: url(../assets/10s-logo.svg);
+        color: transparent;
+        height: 150px;
         width: 150px;
-        margin: 3px;
-        border-radius: 15px;
-        font-size: 1.25em;
     }
+    
+    .twentytwenty button {
+        background: url(../assets/20s-logo.svg);
+        color: transparent;
+        height: 150px;
+        width: 150px;
+    }
+    
+
 
 }
