@@ -3,6 +3,7 @@ import {Game} from '../model/Game';
 import { createGame } from '../service/MongoService';
 import './PostGame.css';
 import { AuthContext } from "../context/auth-context";
+import { NavLink } from 'react-router-dom';
 
 interface Props {
     score: number;
@@ -32,6 +33,7 @@ function PostGame({score, playlist, playlistId}: Props) {
     return(
         <div className="PostGame">
             <p>You got {score} out of 10!</p>
+            <NavLink to="/"><button className="PlayAgain">Play Again!</button></NavLink>
         </div>
     )
 }

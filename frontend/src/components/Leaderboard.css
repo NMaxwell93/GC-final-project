@@ -1,0 +1,15 @@
+.Leaderboard {
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 3px;
+    background-color: white;
+    opacity: 75%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.LeaderboardHeader {
+    color: #F2542D;
+}
