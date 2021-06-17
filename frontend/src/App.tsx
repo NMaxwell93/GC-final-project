@@ -3,6 +3,7 @@ import './App.css';
 import Game from './components/Game';
 import Header from './components/Header';
 import Home from './components/Home';
+import Leaderboard from './components/Leaderboard';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         </Route>
         <Route path="/">
           <Home />
+          <Leaderboard/>
         </Route>
         </Switch>
       </Router>

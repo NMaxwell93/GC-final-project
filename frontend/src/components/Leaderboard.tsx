@@ -32,10 +32,11 @@ function Leaderboard() {
     
     return (
         <div className="Leaderboard">
-            <button onClick={() => loadPlaylistLeaderboard("3sfMNERLMuy8QQXb20RywT")}>80's Playlist</button>
+            {/* <button onClick={() => loadPlaylistLeaderboard("3sfMNERLMuy8QQXb20RywT")}>80's Playlist</button>
             <button>80's Playlist</button>
             <button>80's Playlist</button>
-            <button>80's Playlist</button>
+            <button>80's Playlist</button> */}
+            <h3 className="LeaderboardHeader">LEADERBOARD</h3>
             {topFiveUsers.map(eachUser => 
             <p key={eachUser._id}> {eachUser.displayName} {eachUser.total} </p>
         )}
