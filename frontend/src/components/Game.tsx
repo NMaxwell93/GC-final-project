@@ -110,7 +110,7 @@ function Game() {
     <div className="Game">
 
       {gamePlaylist?.data.name}
-      { 
+      {playedCount === 1 &&
       <button onClick={() => generateTrackIndex()}>Play Game</button>
       }
       {trackNumber > -1 && playedCount <= 11 && (
