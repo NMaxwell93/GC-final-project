@@ -36,7 +36,7 @@ app.get("/", async (req, res) => {
           displayName: {$first: "$user_displayName"}
         }},
         {$sort: {total: -1}},
-          {$limit: 5},
+          {$limit: 15},
         {$project: {
           _id: true,
           displayName: true,
