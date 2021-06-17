@@ -7,9 +7,10 @@ import { AuthContext } from "../context/auth-context";
 interface Props {
     score: number;
     playlist: string;
+    playlistId: string;
 }
 
-function PostGame({score, playlist}: Props) {
+function PostGame({score, playlist, playlistId}: Props) {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
@@ -20,6 +21,7 @@ function PostGame({score, playlist}: Props) {
         user_uid: user?.uid!,
         user_displayName: user?.displayName!,
         playlist: playlist,
+        playlistId: playlistId,
         score: score
     } 
 

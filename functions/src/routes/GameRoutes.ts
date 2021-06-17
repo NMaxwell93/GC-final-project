@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { getClient } from "../db";
 // import { ObjectId } from "mongodb";
-import { Game, TopFiveUsers } from "../model/gamedata";
+import { Game, TopFiveByPlaylist, TopFiveUsers } from "../model/gamedata";
 
 const app = express();
 
@@ -54,7 +54,38 @@ app.get("/", async (req, res) => {
     }
   });
 
-
+// top score by user and playlist
+app.get("/leaderboard/:playlistId", async (req, res) => {
+  const playlistId = req.params.playlistId
+  try {
+    const client = await getClient();
+    const game = await client.db().collection<TopFiveByPlaylist>('gameData').aggregate([
+      {$group: {
+        _id: {
+          playlistId: `${playlistId}`,
+          userName: "$user_displayName",
+          score: "$score"
+        },
+        total: {$sum: "$score"}
+      }},
+      {$sort: {total: -1}},
+        {$limit: 5},
+      {$project: {
+        _id: true,
+        displayName: true,
+        total: true
+      }}
+    ]).toArray();
+    if (game) {
+      res.json(game);
+    } else {
+      res.status(404).json({message: "Not Found"});
+    }
+  } catch (err) {
+    console.error("FAIL", err);
+    res.status(500).json({message: "Internal Server Error"});
+  }
+});
 
 // Adding new instance of game
   app.post("/", async (req, res) => {
@@ -69,8 +100,6 @@ app.get("/", async (req, res) => {
       res.status(500).json({message: "Internal Server Error"});
     }
   });
-
-
 
 
   export default functions.https.onRequest(app);

@@ -1,15 +1,27 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import {TopFiveUsers} from "../model/Game";
-import { topFive } from "../service/MongoService";
+import {TopFiveByPlaylist, TopFiveUsers} from "../model/Game";
+import { getTopFiveByPlaylist, topFive } from "../service/MongoService";
 import "./Leaderboard.css";
 
+
+
 function Leaderboard() {
-    const [topFiveUsers, setTopFiveUsers] = useState<TopFiveUsers[]>([])
+    const [topFiveUsers, setTopFiveUsers] = useState<TopFiveUsers[]>([]);
+    const [selectedLeaderboard, setSelectedLeaderboard] = useState<TopFiveByPlaylist[]>([]);
+
 
     useEffect(() => {
         loadLeaderboard();
     },[])
+
+    function loadPlaylistLeaderboard(playlistName:string) {
+        getTopFiveByPlaylist(playlistName).then(topFivePlaylist => {
+            setSelectedLeaderboard(topFivePlaylist)
+            console.log(selectedLeaderboard)
+        })
+        setTopFiveUsers([]);
+    }
 
     function loadLeaderboard() {
         topFive().then(topFiveApi => {
@@ -20,6 +32,10 @@ function Leaderboard() {
     
     return (
         <div className="Leaderboard">
+            <button onClick={() => loadPlaylistLeaderboard("3sfMNERLMuy8QQXb20RywT")}>80's Playlist</button>
+            <button>80's Playlist</button>
+            <button>80's Playlist</button>
+            <button>80's Playlist</button>
             {topFiveUsers.map(eachUser => 
             <p key={eachUser._id}> {eachUser.displayName} {eachUser.total} </p>
         )}

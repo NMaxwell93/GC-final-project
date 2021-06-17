@@ -5,6 +5,7 @@ export interface Game {
     user_uid: string | undefined;
     user_displayName: string | undefined;
     playlist: string;
+    playlistId: string;
     score: number;
 }
 
@@ -20,5 +21,19 @@ export interface UserInfo{
 export  interface TopFiveUsers {
     _id?: ObjectId;
     total: number;
+    displayName: string;
+}
+
+export interface TopFiveEighties {
+    _id?: ObjectId;
+    total: number;
+    playlist: string;
+    displayName: string;
+}
+
+export interface TopFiveByPlaylist {
+    _id?: ObjectId;
+    total: number;
+    playlist: string;
     displayName: string;
 }

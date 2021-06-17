@@ -132,7 +132,7 @@ function Game() {
         </div>
       )}
       {playedCount > 11 && 
-        <PostGame score={score} playlist={gamePlaylist!.data.name} />
+        <PostGame score={score} playlist={gamePlaylist!.data.name} playlistId ={gamePlaylist!.data.id} />
 
       }
     </div>

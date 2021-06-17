@@ -28,7 +28,7 @@ body{
 
 img{
     width: 350px;
-    height: 100px;
+    height: auto;
     float: left;
 }
 
@@ -53,6 +53,11 @@ img{
         justify-content: space-between;
         padding-left: 0px;
         padding-right: 0px;
+    }
+    img{
+        width: 300px;
+        height: 200px;
+        float: left;
     }
 }
 
