@@ -2,10 +2,7 @@
 
 .Header {
     display: flex;
-    justify-content: center;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 0px;
+    justify-content: space-between;
 }
 
 .userIMG {
@@ -27,8 +24,7 @@ body{
 }
 
 img{
-    width: 350px;
-    height: auto;
+    width: 200px;
     float: left;
 }
 

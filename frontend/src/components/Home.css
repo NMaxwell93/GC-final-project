@@ -3,8 +3,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* flex-flow: row; */
+    flex-direction: row;
+    justify-content: space-between;
     flex-wrap: wrap;
+}
+
+.playlistButtons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    height: 200px;
+    justify-content: center;
 }
 
 .fifties button {
@@ -89,6 +98,9 @@ button {
 
     .playlistButtons {
         display: flex;
+        flex-wrap: wrap;
+        height: 350px;
+        width: 700px;
     }
 
     .fifties button {
