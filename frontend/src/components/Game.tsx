@@ -114,13 +114,13 @@ function Game() {
       <button onClick={() => generateTrackIndex()}>Play Game</button>
       }
       {trackNumber > -1 && playedCount <= 11 && (
-        <div>
+        <div className="GameContainer">
           <div className="audio-player">
             <div className="track-info">
               <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
-                <p>{time}</p>
+                <p className="Timer">{time}</p>
               <AudioPlayer trackNumber={trackNumber}gamePlaylist={gamePlaylist!} choices={choices}/>
-              <p> Score: {score} </p>
+              <p className="Score"> Score: {score} </p>
             </div>
           </div>
           <div className="ArtistChoices">

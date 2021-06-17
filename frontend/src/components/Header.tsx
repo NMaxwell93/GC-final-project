@@ -16,7 +16,7 @@ function Header() {
                     <div className="Header_user">
                         { !!user.photoURL && <img className="userIMG" src={user.photoURL} alt="" />}
                         {user.displayName}
-                        <p>Overall Avg. Score: 90%</p>
+                        {/* <p>Overall Avg. Score: 90%</p> */}
                     </div> 
                 }
             {

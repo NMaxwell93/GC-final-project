@@ -18,7 +18,7 @@ function AudioPlayer({ trackNumber, gamePlaylist, choices }: Props) {
       <h3 className="artist">
         {gamePlaylist?.data.tracks.items[trackNumber].track.artists[0].name}
       </h3> */}
-      <audio src={gamePlaylist?.data.tracks.items[trackNumber].track.preview_url} controls ></audio>
+      <audio src={gamePlaylist?.data.tracks.items[trackNumber].track.preview_url}  ></audio>
 
     </div>
 

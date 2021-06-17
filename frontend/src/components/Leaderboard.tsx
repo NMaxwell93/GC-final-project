@@ -38,7 +38,7 @@ function Leaderboard() {
             <button>80's Playlist</button> */}
             <h3 className="LeaderboardHeader" style={{display: 'flex',alignItems: 'center',justifyContent: 'center',}}>LEADERBOARD</h3>
             {topFiveUsers.map(eachUser => 
-            <p key={eachUser._id}> {eachUser.displayName} {eachUser.total} </p>
+            <p key={eachUser._id}> {eachUser.displayName} - {eachUser.total} POINTS </p>
         )}
         </div>
     )
