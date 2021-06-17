@@ -21,9 +21,9 @@ function Header() {
                 }
             {
                 !user ? 
-                    <button className="google" onClick={signInWithGoogle} >Login</button>
+                    <button className="SignInButton" onClick={signInWithGoogle} >Login</button>
                 :
-                    <button onClick={signOut} >Sign out</button>
+                    <button className="SignOutButton"onClick={signOut} >Logout</button>
             }
         </div>
     )
