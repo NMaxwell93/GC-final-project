@@ -69,7 +69,7 @@ app.get("/leaderboard/:playlistId", async (req, res) => {
         total: {$sum: "$score"}
       }},
       {$sort: {total: -1}},
-        {$limit: 5},
+        {$limit: 15},
       {$project: {
         _id: true,
         displayName: true,
