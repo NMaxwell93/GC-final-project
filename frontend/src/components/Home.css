@@ -7,13 +7,13 @@
     flex-wrap: wrap;
 }
 
+
 .eighties button{
     background-color: #562C2C;
-
 }
 
 .nineties button{
-
+    background-color: #562C2C;
 }
 
 .aughts button{
@@ -47,22 +47,49 @@ a:visited{
         display: flex;
     }
 
-    .eighties button{
+    .sixties button{
+        background: url(../assets/60s-logo-1.svg);
+        color: transparent;
         padding:5px;
-        height: 80px;
+        height: 150px;
         width: 150px;
         margin: 3px;
         border-radius: 15px;
-        font-size: 1.25em;
+        font-size: 0;
+        cursor: pointer;
+    }
+
+    .seventies button{
+        background: url(../assets/70s-logo-1.svg);
+        padding:5px;
+        height: 150px;
+        width: 150px;
+        margin: 3px;
+        border-radius: 15px;
+        font-size: 0;
+        cursor: pointer;
+    }
+
+    .eighties button{
+        background: url(../assets/80s-logo-1.svg);
+        font-size: 0px;
+        padding:5px;
+        height: 150px;
+        width: 150px;
+        margin: 3px;
+        border-radius: 15px;
+        font-size: 0;
+        cursor: pointer;
     }
     
     .nineties button{
-        padding:5px;
-        height: 80px;
+        background: url(../assets/90s-logo-1.svg);
+        height: 150px;
         width: 150px;
         margin: 3px;
         border-radius: 15px;
-        font-size: 1.25em;    
+        font-size: 0; 
+        cursor: pointer;
     }
     
     .aughts button{

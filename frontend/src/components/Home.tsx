@@ -10,18 +10,24 @@ function Home() {
     <div className="Home">
       <div className="playlistButtons">
 
+      <div className="sixties">
+        <NavLink to="/game/3sfMNERLMuy8QQXb20RywT"><button type="button">60s Playlist</button></NavLink>
+      </div>
+      <div className="seventies">
+        <NavLink to="/game/3sfMNERLMuy8QQXb20RywT"><button>70s Playlist</button></NavLink>
+      </div>
       <div className="eighties">
-        <button><NavLink to="/game/3sfMNERLMuy8QQXb20RywT">80's Playlist</NavLink></button>
+        <NavLink to="/game/3sfMNERLMuy8QQXb20RywT"><button>80s Playlist</button></NavLink>
       </div>
       <div className="nineties">      
-        <button><NavLink to="/game/3RStcFzMl3qokh8cTzE1wK">90's Playlist</NavLink></button>
+        <NavLink to="/game/3RStcFzMl3qokh8cTzE1wK"><button>90s Playlist</button></NavLink>
       </div>
-      <div className="aughts">
+      {/* <div className="aughts">
         <button><NavLink to="/game/1udqwx26htiKljZx4HwVxs">00's Playlist</NavLink></button>
       </div>
       <div className="twentytens">
         <button><NavLink to="/game/7BEk3inUCfgSfuHI2KwtBc">2010's Playlist</NavLink></button>
-      </div>
+      </div> */}
       <Leaderboard/>
       </div>
     </div>
