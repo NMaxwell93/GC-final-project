@@ -9,7 +9,7 @@
     height: auto;
     width: auto;
     border-radius: 50%;
-    border: 1px solid gray;
+    border: 1px solid black;
 }
 
 .Header_user {
@@ -66,8 +66,7 @@ img{
         padding-right: 0px;
     }
     img{
-        width: 300px;
-        height: 200px;
+        width: 250px;
         float: left;
     }
 }

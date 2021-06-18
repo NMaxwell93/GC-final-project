@@ -1,78 +1,86 @@
 
 .Home {
     display: flex;
+    height: 300px;
+    width: 100%;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    justify-content: space-between;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .playlistButtons {
     display: flex;
     flex-wrap: wrap;
-    width: 500px;
+    width: 350px;
     height: 200px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;;
+}
+
+.userInputContainer {
+    color: white;
     justify-content: center;
 }
 
 .fifties button {
     background: url(../assets/50s-logo.svg);
     color: transparent;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
 }
 
 .sixties button {
     background: url(../assets/60s-logo-1.svg);
     color: transparent;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
 }
 
 .seventies button {
     background: url(../assets/70s-logo-1.svg);
     color: transparent;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
 }
 
 .eighties button {
     background: url(../assets/80s-logo-1.svg);
     color: transparent;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
 }
 
 .nineties button {
     background: url(../assets/90s-logo-1.svg);
     color: transparent;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
 }
 
 .twothousands button {
     background: url(../assets/00s-logo.svg);
     color: transparent;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
 }
 
 .twothousandten button {
     background: url(../assets/10s-logo.svg);
     color: transparent;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
 }
 
 .twentytwenty button {
     background: url(../assets/20s-logo.svg);
     color: transparent;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
 }
-
-
 
 a:link {
     color: white;
@@ -91,9 +99,9 @@ button {
 
     .Home {
         display: flex;
-        height: 100%;
         justify-content: center;
         align-content: center;
+        height: 415px;
     }
 
     .playlistButtons {
@@ -101,6 +109,15 @@ button {
         flex-wrap: wrap;
         height: 350px;
         width: 700px;
+        padding-top: 0px;
+        padding-bottom: 40px;
+        margin-bottom: 50px;
+    }
+
+    .userInputContainer {
+        justify-content: center;
+        position: absolute;
+        bottom: 0px;
     }
 
     .fifties button {

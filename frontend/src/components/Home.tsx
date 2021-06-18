@@ -39,7 +39,7 @@ function Home() {
       </div>
       </div>
       <div className="userInputContainer">
-          <label className="userInput"> Try your own Spotify Playlist: 
+          <label className="userInput"> Try your own Spotify Playlist!:
           <input type="text" onChange={(e) => setUserInput(e.target.value.substr(34, 56))} placeholder="Insert Playlist URL" />
           </label>
           <NavLink to={`/game/${userInput}`}><button>Submit</button></NavLink>
