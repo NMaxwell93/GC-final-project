@@ -13,8 +13,8 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm ci && npm run build
         working-directory: ./frontend
-          REACT_APP_API_URL: https://us-central1-quick-click-gc.cloudfunctions.net/gameData
-          REACT_APP_SPOTIFY_API_CREDENTIALS: 82c16e4cedd0492ca629135ed2fe5b0b:bea27d95be5f455a9cc43fd75fba083a
+          REACT_APP_API_URL: '${{secrets.API_URL}}'
+          REACT_APP_SPOTIFY_API_CREDENTIALS: '${{secrets.SPOTIFY_API_CREDENTIALS}}'
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
