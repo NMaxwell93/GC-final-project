@@ -11,11 +11,9 @@ export interface Game {
 
 export interface UserInfo{
     _id?: ObjectId;
-    username: string;
-    GameInfo: [{
-        playlist: string;
-        score: number;
-    }]
+    user_uid: string | undefined;
+    user_displayName: string | undefined;
+    score: number;
 }
 
 export  interface TopFiveUsers {
@@ -24,12 +22,6 @@ export  interface TopFiveUsers {
     displayName: string;
 }
 
-export interface TopFiveEighties {
-    _id?: ObjectId;
-    total: number;
-    playlist: string;
-    displayName: string;
-}
 
 export interface TopFiveByPlaylist {
     _id?: ObjectId;

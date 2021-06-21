@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { getClient } from "../db";
 // import { ObjectId } from "mongodb";
-import { Game, TopFiveByPlaylist, TopFiveUsers } from "../model/gamedata";
+import { Game, TopFiveByPlaylist, TopFiveUsers, UserInfo } from "../model/gamedata";
 
 const app = express();
 
@@ -19,6 +19,34 @@ app.get("/", async (req, res) => {
       console.log(results);
       console.log(client.db().databaseName)
       res.json(results); // send JSON results
+    } catch (err) {
+      console.error("FAIL", err);
+      res.status(500).json({message: "Internal Server Error"});
+    }
+  });
+
+  // Show user overall score by user_UID
+  app.get("/:user_uid", async (req, res) => {
+    const user_uid = req.params.user_uid;
+    try {
+      const client = await getClient();
+      const userData = await client.db().collection<UserInfo>('gameData').aggregate([
+        {$match: {user_uid: user_uid}},
+        {$group: {
+          _id: "$user_uid",
+          total: {$sum: "$score" }
+        }},
+        {$project: {
+          _id: true,
+          displayName: true,
+          total: true
+        }}
+      ]);
+      if (userData) {
+        res.json(userData);
+      } else {
+        res.status(404).json({message: "Not Found"});
+      }
     } catch (err) {
       console.error("FAIL", err);
       res.status(500).json({message: "Internal Server Error"});
