@@ -16,7 +16,7 @@ export interface UserInfo{
     score: number;
 }
 
-export  interface TopFiveUsers {
+export interface TopFiveUsers {
     _id?: ObjectId;
     total: number;
     displayName: string;

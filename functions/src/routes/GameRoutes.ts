@@ -25,8 +25,38 @@ app.get("/", async (req, res) => {
     }
   });
 
+
+//Best overall scores, top 5
+app.get("/leaderboard", async (req, res) => {
+  try {
+    const client = await getClient();
+    const game = await client.db().collection<TopFiveUsers>('gameData').aggregate([
+      {$group: {
+        _id: "$user_uid",
+        total: {$sum: "$score"},
+        displayName: {$first: "$user_displayName"}
+      }},
+      {$sort: {total: -1}},
+        {$limit: 15},
+      {$project: {
+        _id: true,
+        displayName: true,
+        total: true
+      }}
+    ]).toArray();
+    if (game) {
+      res.json(game);
+    } else {
+      res.status(404).json({message: "Not Found"});
+    }
+  } catch (err) {
+    console.error("FAIL", err);
+    res.status(500).json({message: "Internal Server Error"});
+  }
+});
+
   // Show user overall score by user_UID
-  app.get("/:user_uid", async (req, res) => {
+  app.get("/userscore/:user_uid", async (req, res) => {
     const user_uid = req.params.user_uid;
     try {
       const client = await getClient();
@@ -41,38 +71,9 @@ app.get("/", async (req, res) => {
           displayName: true,
           total: true
         }}
-      ]);
+      ]).toArray();;
       if (userData) {
         res.json(userData);
-      } else {
-        res.status(404).json({message: "Not Found"});
-      }
-    } catch (err) {
-      console.error("FAIL", err);
-      res.status(500).json({message: "Internal Server Error"});
-    }
-  });
-
-//Best overall scores, top 5
-  app.get("/leaderboard", async (req, res) => {
-    try {
-      const client = await getClient();
-      const game = await client.db().collection<TopFiveUsers>('gameData').aggregate([
-        {$group: {
-          _id: "$user_uid",
-          total: {$sum: "$score"},
-          displayName: {$first: "$user_displayName"}
-        }},
-        {$sort: {total: -1}},
-          {$limit: 15},
-        {$project: {
-          _id: true,
-          displayName: true,
-          total: true
-        }}
-      ]).toArray();
-      if (game) {
-        res.json(game);
       } else {
         res.status(404).json({message: "Not Found"});
       }
