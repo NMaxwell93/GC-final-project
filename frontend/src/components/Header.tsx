@@ -1,13 +1,29 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../context/auth-context";
 import { signInWithGoogle, signOut } from "../firebaseConfig";
 import logo from '../assets/logo.svg'
 import "./Header.css"
 import {NavLink} from 'react-router-dom'
+import { useState } from "react";
+import { getUserScore } from "../service/MongoService";
+import { UserInfo } from "../model/Game";
 
 
 function Header() {
-    const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext);
+    const [ userInfo, setUserInfo ] = useState<UserInfo[]>([]);
+
+    useEffect(loadUserScore, [user]);
+
+    function loadUserScore() {
+        if (user) {
+            getUserScore(user?.uid!).then(results => {
+                setUserInfo(results)
+            });
+        } else {
+            setUserInfo([]);
+        }
+    };
 
     return (
         <div className="Header">
@@ -15,10 +31,12 @@ function Header() {
             { user && 
                     <div className="Header_user">
                         { !!user.photoURL && <img className="userIMG" src={user.photoURL} alt="" />}
-                        {user.displayName}
-                        {/* <p>Overall Avg. Score: 90%</p> */}
+                        <p>{user.displayName}</p>
                     </div> 
-                }
+            }
+            { user && userInfo.length > 0 &&
+                <p>Total Points: {userInfo[0].total}</p>
+            }
             {
                 !user ? 
                     <button className="SignInButton" onClick={signInWithGoogle} >Login</button>

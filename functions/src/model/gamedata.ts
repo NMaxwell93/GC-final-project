@@ -13,7 +13,7 @@ export interface UserInfo{
     _id?: ObjectId;
     user_uid: string | undefined;
     user_displayName: string | undefined;
-    score: number;
+    total: number;
 }
 
 export interface TopFiveUsers {

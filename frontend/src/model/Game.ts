@@ -14,6 +14,13 @@ export  interface TopFiveUsers {
     displayName: string;
 }
 
+export interface UserInfo{
+    _id?: string;
+    user_uid: string | undefined;
+    user_displayName: string | undefined;
+    total: number;
+}
+
 export interface TopFiveByPlaylist {
     _id?: string;
     total: number;

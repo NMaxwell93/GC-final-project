@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Game, TopFiveByPlaylist, TopFiveUsers } from "../model/Game";
+import { Game, TopFiveByPlaylist, TopFiveUsers, UserInfo } from "../model/Game";
 
 const baseUrl = process.env.REACT_APP_API_URL || "";
 if (!baseUrl) {
@@ -16,4 +16,8 @@ export function topFive(): Promise<TopFiveUsers[]> {
 
 export function getTopFiveByPlaylist(playlist: string): Promise<TopFiveByPlaylist[]> {
   return axios.get(`${baseUrl}/leaderboard/${playlist}`).then((res) => res.data);
+}
+
+export function getUserScore(userUID: string): Promise<UserInfo[]> {
+  return axios.get(`${baseUrl}/userscore/${userUID}`).then((res) => res.data);
 }
