@@ -18,12 +18,13 @@ function Game() {
   const [trackNumber, setTrackNumber] = useState(-1);
   const [artistArray, setArtistArray] = useState<string[]>([]);
   const [choices, setChoices] = useState<string[]>([]);
-  const [playedCount, setPlayedCount] = useState(1);
+  const [playedCount, setPlayedCount] = useState(0);
   const [score, setScore] = useState(0);
-  const [time, setTime] = useState(4);
+  const [time, setTime] = useState(5);
+  const [answerColorChange, useAnswerColorChange] = useState("")
 
   const reset = () => {
-      setTime(4);
+      setTime(5);
   }
   
   const tick = () => {
@@ -108,14 +109,21 @@ function Game() {
 
   return (
     <div className="Game">
-
       {gamePlaylist?.data.name}
+      {playedCount === 0 &&
+      <>
       <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
-      {playedCount === 1 &&
       <button onClick={() => generateTrackIndex()}>Play Game</button>
+      </>}
+      {playedCount === 1 &&
+      <>
+      <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
+      <p>Get Ready!</p>
+      <p> {time} </p>
+      </>
       }
-      {trackNumber > -1 && playedCount <= 11 && (
-        <div className="GameContainer">
+      {trackNumber > -1 && playedCount <= 11 && playedCount > 1 && 
+        <div className={"GameContainer Correct " + answerColorChange}>
           <div className="audio-player">
             <div className="track-info">
               <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
@@ -131,7 +139,7 @@ function Game() {
             <button onClick={() => {checkAnswer(3);generateTrackIndex(); reset();}}>{choices[3]}</button>
           </div>
         </div>
-      )}
+      }
       {playedCount > 11 && 
         <PostGame score={score} playlist={gamePlaylist!.data.name} playlistId ={gamePlaylist!.data.id} />
 
