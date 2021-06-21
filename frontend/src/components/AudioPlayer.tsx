@@ -5,10 +5,9 @@ import "./AudioPlayer.css";
 interface Props {
   trackNumber: number;
   gamePlaylist: Playlist;
-  choices: string[];
 }
 
-function AudioPlayer({ trackNumber, gamePlaylist, choices }: Props) {
+function AudioPlayer({ trackNumber, gamePlaylist }: Props) {
 
   return (
     <div className="AudioPlayer">
