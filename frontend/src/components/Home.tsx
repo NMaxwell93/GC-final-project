@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom'
 import "./Home.css";
-import Leaderboard from './Leaderboard';
+
 
 
 function Home() {

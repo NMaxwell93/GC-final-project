@@ -1,27 +1,27 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import {TopFiveByPlaylist, TopFiveUsers} from "../model/Game";
-import { getTopFiveByPlaylist, topFive } from "../service/MongoService";
+import { TopFiveUsers} from "../model/Game";
+import { topFive } from "../service/MongoService";
 import "./Leaderboard.css";
 
 
 
 function Leaderboard() {
     const [topFiveUsers, setTopFiveUsers] = useState<TopFiveUsers[]>([]);
-    const [selectedLeaderboard, setSelectedLeaderboard] = useState<TopFiveByPlaylist[]>([]);
+    // const [selectedLeaderboard, setSelectedLeaderboard] = useState<TopFiveByPlaylist[]>([]);
 
 
     useEffect(() => {
         loadLeaderboard();
     },[])
 
-    function loadPlaylistLeaderboard(playlistName:string) {
-        getTopFiveByPlaylist(playlistName).then(topFivePlaylist => {
-            setSelectedLeaderboard(topFivePlaylist)
-            console.log(selectedLeaderboard)
-        })
-        setTopFiveUsers([]);
-    }
+    // function loadPlaylistLeaderboard(playlistName:string) {
+    //     getTopFiveByPlaylist(playlistName).then(topFivePlaylist => {
+    //         setSelectedLeaderboard(topFivePlaylist)
+    //         console.log(selectedLeaderboard)
+    //     })
+    //     setTopFiveUsers([]);
+    // }
 
     function loadLeaderboard() {
         topFive().then(topFiveApi => {
