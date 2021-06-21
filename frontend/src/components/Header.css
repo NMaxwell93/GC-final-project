@@ -2,17 +2,14 @@
 
 .Header {
     display: flex;
-    justify-content: center;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 0px;
+    justify-content: space-between;
 }
 
 .userIMG {
     height: auto;
     width: auto;
     border-radius: 50%;
-    border: 1px solid gray;
+    border: 1px solid black;
 }
 
 .Header_user {
@@ -27,8 +24,7 @@ body{
 }
 
 img{
-    width: 350px;
-    height: auto;
+    width: 200px;
     float: left;
 }
 
@@ -70,8 +66,7 @@ img{
         padding-right: 0px;
     }
     img{
-        width: 300px;
-        height: 200px;
+        width: 250px;
         float: left;
     }
 }
