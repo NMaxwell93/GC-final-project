@@ -110,6 +110,7 @@ function Game() {
     <div className="Game">
 
       {gamePlaylist?.data.name}
+      <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
       {playedCount === 1 &&
       <button onClick={() => generateTrackIndex()}>Play Game</button>
       }
