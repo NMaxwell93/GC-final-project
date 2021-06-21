@@ -22,8 +22,31 @@
 }
 
 .userInputContainer {
+    display: flex;
     color: white;
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 10rem;
+    padding: 5px 15px;
+    width: 325px;
+    height: 50px;
     justify-content: center;
+    align-items: center;
+    font-size: .75em;
+}
+
+input {
+    border-radius: 10rem;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.userInputSubmit button {
+    height: 30px;
+    width: 80px;
+    border-radius: 10rem;
+    font-size: .8em;
+    margin-left: 30px;
 }
 
 .fifties button {
@@ -118,6 +141,22 @@ button {
         justify-content: center;
         position: absolute;
         bottom: 0px;
+        width: 600px;
+        font-size: .9em;
+        padding: 5px 20px 10px 20px;
+    }
+
+    .userInput {
+        border-radius: 10rem;
+        width: 100%;
+        margin-top: 5px;
+    }
+    
+    .userInputSubmit button {
+        height: 40px;
+        width: 100px;
+        border-radius: 10rem;
+        margin-left: 30px;
     }
 
     .fifties button {
