@@ -1,5 +1,5 @@
 import  { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import _ from "lodash";
 import { Playlist } from "../model/Playlist";
 import { findPlaylist } from "../service/SpotifyApiService";
@@ -47,11 +47,11 @@ function Game() {
 
   // Loads playlist first
   useEffect(() => {
-    loadPlaylist();
+    loadPlaylist(playlistId);
   }, [playlistId]);
 
   // Function that runs API call
-  function loadPlaylist() {
+  function loadPlaylist(playlistId:string) {
     findPlaylist(playlistId).then((results) => {
       let filteredPlaylistArray = results.data.tracks.items.filter(song => song.track.preview_url !== null);
       results.data.tracks.items = filteredPlaylistArray
