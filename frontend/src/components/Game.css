@@ -71,7 +71,7 @@
 .ArtistChoices{
     display: flex;
     justify-content: center;
-    position: relative
+    width: 350px;
 }
 
 .ArtistChoices button{
@@ -85,7 +85,6 @@
     text-transform: uppercase;
     font-size: .85em;
     border-radius: 2rem;
-    position: absolute;
 }
 
 button{
@@ -124,6 +123,7 @@ button{
     margin-top: 20px;
     border: 2px solid white;
     border-radius: 3px;
+    width: 500px;
 }
 
 .Game button {
