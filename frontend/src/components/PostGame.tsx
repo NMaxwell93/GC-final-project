@@ -15,7 +15,7 @@ function PostGame({score, playlist, playlistId}: Props) {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        handleAddShoutOut(addedGame)
+        handleAddGame(addedGame)
       });
 
     const addedGame: Game = {
@@ -26,12 +26,13 @@ function PostGame({score, playlist, playlistId}: Props) {
         score: score
     } 
 
-    function handleAddShoutOut(addedGame: Game): void {
+    function handleAddGame(addedGame: Game): void {
         createGame(addedGame);
       }
 
     return(
         <div className="PostGame">
+            <p> {playlist} </p>
             <p>You got {score} out of 10!</p>
             <NavLink to="/"><button className="PlayAgain">Play Again!</button></NavLink>
         </div>

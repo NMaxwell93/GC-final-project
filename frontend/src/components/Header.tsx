@@ -9,6 +9,7 @@ import { getUserScore } from "../service/MongoService";
 import { UserInfo } from "../model/Game";
 
 
+
 function Header() {
     const { user } = useContext(AuthContext);
     const [ userInfo, setUserInfo ] = useState<UserInfo[]>([]);
@@ -43,6 +44,7 @@ function Header() {
                 :
                     <button className="SignOutButton"onClick={signOut} >Logout</button>
             }
+            <NavLink to="/AboutUs"><button className="AboutUsButton">Meet the Team</button></NavLink>
         </div>
     )
 }

@@ -11,6 +11,5 @@ describe("60's playlist API model", () => {
     expect(allOut60sPlaylist.tracks.items.length).toBe(100);
   });
 
-  
 
 });
