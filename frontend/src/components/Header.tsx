@@ -32,10 +32,10 @@ function Header() {
                     <div className="Header_user">
                         { !!user.photoURL && <img className="userIMG" src={user.photoURL} alt="" />}
                         <p>{user.displayName}</p>
-                    </div> 
+                         { user && userInfo.length > 0 &&
+                        <p>Total Points: {userInfo[0].total}</p>
             }
-            { user && userInfo.length > 0 &&
-                <p>Total Points: {userInfo[0].total}</p>
+                    </div> 
             }
             {
                 !user ? 

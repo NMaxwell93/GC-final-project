@@ -7,14 +7,21 @@
 }
 
 .userIMG {
-    height: auto;
-    width: auto;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     border: 1px solid black;
-}
+    }
 
 .Header_user {
     font-size: .75em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Header_user p {
+    height: 0px;
 }
 
 
@@ -62,7 +69,6 @@ img{
 @media screen and (min-width: 768px){
     .Header{
         display: flex;
-        justify-content: space-between;
         padding-left: 0px;
         padding-right: 0px;
     }
@@ -75,6 +81,14 @@ img{
         height: 40px;
         width: 100px;
         font-size: .9em;
+    }
+
+    .userIMG {
+        display: block;
+        height: auto;
+        width: auto;
+        border-radius: 50%;
+        border: 1px solid black;
     }
 }
 

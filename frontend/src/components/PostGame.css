@@ -1,3 +1,9 @@
+.PostGame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .PlayAgain{
     font-family: 'Montserrat', sans-serif;
     background-color: #F2542D;
@@ -15,16 +21,10 @@
 
 @media screen and (min-width: 768px) {
     
-    .Game {
-        display: flex;
-        justify-content: center;
-    }
-
     .PlayAgain {
         height: 80px;
         width: 150px;
         font-size: 1.2em;
-        justify-content: center;
     }
 
     .PostGame {

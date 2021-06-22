@@ -96,11 +96,12 @@
     color: white;
     border-radius: 10%;
     height: 60px;
-    width: 82px;
+    width: fit-content;
     outline: 0;
     text-transform: uppercase;
     font-size: .85em;
     border-radius: 10rem;
+    font-size: .7em;
 }
 
 button{
