@@ -54,15 +54,17 @@ function Game() {
   // Function that runs API call
   function loadPlaylist(playlistId:string) {
     findPlaylist(playlistId).then((results) => {
-      let filteredPlaylistArray = results.data.tracks.items.filter(song => song.track.preview_url !== null);
-      results.data.tracks.items = filteredPlaylistArray
-      // Stores API call results in state
-      setGamePlaylist(results);
       const newArtistArray = [];
       for (let artist of results.data.tracks.items) {
         newArtistArray.push(artist.track.artists[0].name);
       }
       setArtistArray(newArtistArray);
+      console.log(newArtistArray)
+      let filteredPlaylistArray = results.data.tracks.items.filter(song => song.track.preview_url !== null);
+      results.data.tracks.items = filteredPlaylistArray
+      // Stores API call results in state
+      setGamePlaylist(results);
+      console.log(results)
     });
   }
 
