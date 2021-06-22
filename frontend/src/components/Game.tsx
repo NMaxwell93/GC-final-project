@@ -21,7 +21,7 @@ function Game() {
   const [playedCount, setPlayedCount] = useState(0);
   const [score, setScore] = useState(0);
   const [time, setTime] = useState(5);
-  const [answerColorChange, useAnswerColorChange] = useState("")
+  const [answerColorChange, setAnswerColorChange] = useState("Start")
 
   const reset = () => {
       setTime(5);
@@ -101,8 +101,10 @@ function Game() {
         if (choices[choiceIndex] === gamePlaylist?.data.tracks.items[trackNumber].track.artists[0].name) {
            let updateScore = score
             updateScore++ ; 
-            setScore(updateScore)
-            console.log(updateScore)
+            setScore(updateScore);
+            setAnswerColorChange("Correct")
+        } else {
+          setAnswerColorChange("Wrong")
   }
 }
      
@@ -123,13 +125,13 @@ function Game() {
       </>
       }
       {trackNumber > -1 && playedCount <= 11 && playedCount > 1 && 
-        <div className={"GameContainer Correct " + answerColorChange}>
+        <div className="GameContainer ">
           <div className="audio-player">
             <div className="track-info">
               <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
                 <p className="Timer">{time}</p>
               <AudioPlayer trackNumber={trackNumber}gamePlaylist={gamePlaylist!} />
-              <p className="Score"> Score: {score} </p>
+              <p className={"Score " + answerColorChange}> Score: {score} </p>
             </div>
           </div>
           <div className="ArtistChoices">
