@@ -89,11 +89,11 @@ app.get("/leaderboard/:playlistId", async (req, res) => {
   try {
     const client = await getClient();
     const game = await client.db().collection<TopFiveByPlaylist>('gameData').aggregate([
+      {$match: {playlistId: playlistId}},
       {$group: {
         _id: {
-          playlistId: `${playlistId}`,
-          userName: "$user_displayName",
-          score: "$score"
+          playlist: "$playlist",
+          userName: "$user_displayName"
         },
         total: {$sum: "$score"}
       }},
@@ -102,6 +102,7 @@ app.get("/leaderboard/:playlistId", async (req, res) => {
       {$project: {
         _id: true,
         displayName: true,
+        playlist: true,
         total: true
       }}
     ]).toArray();
@@ -132,3 +133,5 @@ app.get("/leaderboard/:playlistId", async (req, res) => {
 
 
   export default functions.https.onRequest(app);
+
+

@@ -21,7 +21,7 @@ function Game() {
   const [playedCount, setPlayedCount] = useState(0);
   const [score, setScore] = useState(0);
   const [time, setTime] = useState(5);
-  const [answerColorChange, setAnswerColorChange] = useState("Start")
+  const [answerColorChange, setAnswerColorChange] = useState("Start");
 
   const reset = () => {
       setTime(5);
@@ -59,12 +59,10 @@ function Game() {
         newArtistArray.push(artist.track.artists[0].name);
       }
       setArtistArray(newArtistArray);
-      console.log(newArtistArray)
       let filteredPlaylistArray = results.data.tracks.items.filter(song => song.track.preview_url !== null);
       results.data.tracks.items = filteredPlaylistArray
       // Stores API call results in state
       setGamePlaylist(results);
-      console.log(results)
     });
   }
 
@@ -72,7 +70,6 @@ function Game() {
   function generateTrackIndex() {
     setPlayGame(true);
     let updateTrackNumber = Math.floor(Math.random() * gamePlaylist!.data.tracks.items.length);
-    console.log(gamePlaylist!.data.tracks.items.length);
     setTrackNumber(updateTrackNumber);
     generateChoices(updateTrackNumber);
     setPlayedCount(prev => prev + 1);
@@ -95,7 +92,6 @@ function Game() {
     newChoiceArray = _.shuffle(newChoiceArray);
 
     setChoices(newChoiceArray);
-    console.log(newChoiceArray);
   }
 
   function checkAnswer(choiceIndex:number) {
@@ -107,7 +103,7 @@ function Game() {
             setAnswerColorChange("Correct")
         } else {
           setAnswerColorChange("Wrong")
-  }
+        }
 }
      
 
