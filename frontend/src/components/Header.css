@@ -2,7 +2,7 @@
 
 .Header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
 }
 
@@ -64,21 +64,7 @@ img{
     font-size: .7em;
     cursor: pointer;
     border-radius: 10rem;
-}
 
-.AboutUsButton{
-    font-family: 'Montserrat', sans-serif;
-    background-color: #F2542D;
-    color: white;
-    padding:5px;
-    height: 40px;
-    width: 100px;
-    margin: 3px;
-    outline: 0;
-    text-transform: uppercase;
-    font-size: .8em;
-    cursor: pointer;
-    border-radius: 10rem;
 }
 
 @media screen and (min-width: 768px){

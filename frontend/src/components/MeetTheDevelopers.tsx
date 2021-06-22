@@ -1,12 +1,12 @@
 import React from 'react';
-import "./AboutUs.css"
+import "./MeetTheDevelopers.css"
 
-function AboutUs(){
+function MeetTheDevelopers(){
     
     return(
         <div className="AboutUs">
             
-            <h1>Meet the team</h1>
+            <h1>Meet the Developers</h1>
 
         <div className="Team">
             
@@ -40,4 +40,4 @@ function AboutUs(){
     )
 }
 
-export default AboutUs
+export default MeetTheDevelopers;

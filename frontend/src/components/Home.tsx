@@ -46,7 +46,11 @@ function Home() {
               <NavLink to={`/game/${userInput}`}><button>Submit</button></NavLink>
             </div>
         </div>
+        <div className="footer">
+            <NavLink to="/meet-the-developers"><button className="DevelopersButton">Meet the Developers</button></NavLink>
+        </div>
     </div>
+    
   );
 }
 
