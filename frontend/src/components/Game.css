@@ -27,8 +27,23 @@
 .Game img {
     padding-top: 10px;
 }
+
+.Start {
+    border: 4px solid white;
+    background-color: white;
+    border-radius: 10rem;
+}
+
 .Correct {
-    border: 2px solid green;
+    border: 4px solid rgb(5, 250, 5);
+    background-color: white;
+    border-radius: 10rem;
+}
+
+.Wrong {
+    border: 4px solid red;
+    background-color: white;
+    border-radius: 10rem;
 }
 
 .GameContainer {
@@ -43,6 +58,8 @@
     justify-content: center;
     align-items: center;
 }
+
+
 
 .audio-player{
     display: flex;
@@ -84,7 +101,7 @@
     outline: 0;
     text-transform: uppercase;
     font-size: .85em;
-    border-radius: 2rem;
+    border-radius: 10rem;
 }
 
 button{
@@ -109,6 +126,9 @@ button{
 .Score {
     font-weight: bolder;
     font-size: 1.2em;
+    color: black;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 @media screen and (min-width: 768px) {
@@ -121,19 +141,19 @@ button{
     padding-top: 10px;
     padding-bottom: 10px;
     margin-top: 20px;
-    border: 2px solid white;
     border-radius: 3px;
     width: 500px;
 }
 
-.Game button {
-    height: 80px;
-    width: 150px;
-    font-size: 1.2em;
+.ArtistChoices {
+    width: 500px;
 }
 
 .ArtistChoices button{
     font-size: .85em;
+    height: 80px;
+    width: 150px;
+    font-size: .7em;
    
 }
 
