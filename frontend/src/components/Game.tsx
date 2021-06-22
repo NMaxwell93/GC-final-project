@@ -133,7 +133,7 @@ function Game() {
               <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
                 <p className="Timer">{time}</p>
               <AudioPlayer trackNumber={trackNumber}gamePlaylist={gamePlaylist!} />
-              <p className={"Score " + answerColorChange}> Score: {score} </p>
+              <p className={"Score " + answerColorChange}> Score: {score} / 10 </p>
             </div>
           </div>
           <div className="ArtistChoices">

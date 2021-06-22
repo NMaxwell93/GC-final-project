@@ -59,8 +59,6 @@
     align-items: center;
 }
 
-
-
 .audio-player{
     display: flex;
     /* height: 500px; */
@@ -79,6 +77,7 @@
     height:200px;
     width:200px;
 }
+
 .track-info{
     display: flex;
     flex-direction: column;
@@ -119,16 +118,17 @@ button{
 
 .Timer {
     font-weight: bolder;
-    font-size: 2.5em;
+    font-size: 1.5em;
     color: white;
+    height: 0px;
 }
 
 .Score {
     font-weight: bolder;
     font-size: 1.2em;
     color: black;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 5px;
+
 }
 
 @media screen and (min-width: 768px) {
@@ -137,12 +137,18 @@ button{
     font-size: 1.2em;
 }
 
+.Game button {
+    height: 80px;
+    width: 150px;
+    font-size: 1.2em;
+}
+
 .GameContainer {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
     border-radius: 3px;
     width: 500px;
+    height: 450px;
 }
 
 .ArtistChoices {
@@ -154,11 +160,23 @@ button{
     height: 80px;
     width: 150px;
     font-size: .7em;
-   
 }
 
 .audio-player {
     width: 500px;
+    height: 360px;
+}
+
+.track-info {
+    width: 500px;
+    height: 350px;
+}
+
+.Timer {
+    font-weight: bolder;
+    font-size: 2em;
+    color: white;
+    height: 0px;
 }
 
 }
