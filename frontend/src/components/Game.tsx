@@ -85,7 +85,7 @@ function Game() {
     if (gamePlaylist === null || trackNumber === -1) {
       return;
     }
-    if (trackNumber > 9) {
+    if (trackNumber > gamePlaylist!.data.tracks.items.length - 1) {
       return;
     }
 
@@ -114,19 +114,22 @@ function Game() {
           setAnswerColorChange("Wrong")
         }
 }
-     
-
+  if (!gamePlaylist) {
+    return(
+      <div className="GameLoading">Game is Loading...</div>
+    )
+  }
   return (
     <div className="Game">
-      {gamePlaylist?.data.name}
+      <p>{gamePlaylist?.data.name}</p>
       {playedCount === 0 &&
       <>
-      <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
+      <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`Playlist art for ${gamePlaylist?.data.name}`}/>
       <button onClick={() => generateTrackIndex()}>Play Game</button>
       </>}
       {playedCount === 1 &&
       <>
-      <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
+      <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`Playlist art for ${gamePlaylist?.data.name}`}/>
       <p>Get Ready!</p>
       <p> {time} </p>
       </>
@@ -135,10 +138,10 @@ function Game() {
         <div className="GameContainer ">
           <div className="audio-player">
             <div className="track-info">
-              <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
+              <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`Playlist art for ${gamePlaylist?.data.name}`}/>
                 <p className="Timer">{time}</p>
               <AudioPlayer trackNumber={trackNumber}gamePlaylist={gamePlaylist!} />
-              <p className={"Score " + answerColorChange}> Score: {score} / 10 </p>
+              <p className={"Score " + answerColorChange}> Score: {score} / {gamePlaylist!.data.tracks.items.length} </p>
             </div>
           </div>
           <div className="ArtistChoices">
@@ -149,9 +152,8 @@ function Game() {
           </div>
         </div>
       }
-      {playedCount > 11 && 
-        <PostGame score={score} playlist={gamePlaylist!.data.name} playlistId ={gamePlaylist!.data.id} />
-
+      {playedCount > gamePlaylist!.data.tracks.items.length + 1 && 
+        <PostGame score={score} playlist={gamePlaylist!.data.name} playlistId ={gamePlaylist!.data.id} length={gamePlaylist!.data.tracks.items.length} artwork={gamePlaylist?.data.images[0].url} />
       }
     </div>
   );
