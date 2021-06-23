@@ -15,12 +15,17 @@ function App() {
           <Route path="/game/:playlistId">
             <Game />
           </Route>
-        <Route path="/meet-the-developers">
+          <Route path="/leaderboard/:playlistId" >
+            <Leaderboard />
+          </Route>
+          <Route path="/leaderboard" >
+            <Leaderboard />
+          </Route>
+          <Route path="/meet-the-developers">
             <MeetTheDevelopers/>            
           </Route>
           <Route path="/">
             <Home />
-            <Leaderboard />
           </Route>
           </Switch>
       </Router>

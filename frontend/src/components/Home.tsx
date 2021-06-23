@@ -7,8 +7,6 @@ import "./Home.css";
 function Home() {
   const [ userInput, setUserInput ] = useState("")
 
-
-
   return (
     <div className="Home">
       <div className="playlistButtons">

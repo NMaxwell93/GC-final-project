@@ -22,8 +22,9 @@ export interface UserInfo{
 }
 
 export interface TopFiveByPlaylist {
-    _id?: string;
+    _id?: {
+        playlist: string,
+        userName: string
+    };
     total: number;
-    playlist: string;
-    displayName: string;
 }

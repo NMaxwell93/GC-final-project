@@ -38,6 +38,7 @@ function Header() {
             }
                     </div> 
             }
+            <NavLink to="/leaderboard"><button className="SignInButton">LeaderBoard</button></NavLink>
             {
                 !user ? 
                     <button className="SignInButton" onClick={signInWithGoogle} >Login</button>

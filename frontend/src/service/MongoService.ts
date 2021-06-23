@@ -14,7 +14,7 @@ export function topFive(): Promise<TopFiveUsers[]> {
   return axios.get(`${baseUrl}/leaderboard`).then((res) => res.data);
 }
 
-export function getTopFiveByPlaylist(playlist: string): Promise<TopFiveByPlaylist[]> {
+export function playlistLeaderboard(playlist: string): Promise<TopFiveByPlaylist[]> {
   return axios.get(`${baseUrl}/leaderboard/${playlist}`).then((res) => res.data);
 }
 

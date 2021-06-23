@@ -27,5 +27,5 @@ export interface TopFiveByPlaylist {
     _id?: ObjectId;
     total: number;
     playlist: string;
-    displayName: string;
+    userName: string;
 }
