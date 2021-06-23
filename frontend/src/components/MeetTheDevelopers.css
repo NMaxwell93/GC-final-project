@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
 
 }
 
@@ -12,4 +13,69 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 350px;
+}
+
+.TeamMember {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    background-color: #F2542D;
+    font-size: 1em;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.AdamPlaylist button { 
+    background: url(../assets/music-note-logo.svg);
+    color: transparent;
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+.AdamLinkedIn button, .AnnelieseLinkedIn button, .NickLinkedIn button, .SaniahLinkedIn button {
+    background: url(../assets/linkedin-logo.svg);
+    color: transparent;
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+.AdamGithub button, .AnnelieseGithub button, .NickGithub button, .SaniahGithub button {
+    background: url(../assets/github-logo.svg);
+    color: transparent;
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+.AnneliesePlaylist button { 
+    background: url(../assets/music-note-logo.svg);
+    color: transparent;
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+.NickPlaylist button { 
+    background: url(../assets/music-note-logo.svg);
+    color: transparent;
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+.SaniahPlaylist button { 
+    background: url(../assets/music-note-logo.svg);
+    color: transparent;
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
 }
