@@ -32,7 +32,6 @@ function PostGame({score, playlist, playlistId}: Props) {
 
     return(
         <div className="PostGame">
-            <p> {playlist} </p>
             <p>You got {score} out of 10!</p>
             <NavLink to="/"><button className="PlayAgain">Play Again!</button></NavLink>
         </div>
