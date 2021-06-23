@@ -34,7 +34,6 @@ function Game() {
     if (time === 0) {
       reset();
       generateTrackIndex();
-      console.log(trackNumber)
     } else {
       setTime(time - 1);
     }
@@ -80,8 +79,6 @@ function Game() {
     setTrackNumber(updateTrackNumber);
     generateChoices(updateTrackNumber);
     setPlayedCount(prev => prev + 1);
-    console.log(trackNumber)
-    console.log(playedCount + " played count")
   }
 
   function generateChoices(trackNumber: number) {
