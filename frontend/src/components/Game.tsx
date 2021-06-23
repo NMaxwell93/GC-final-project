@@ -15,7 +15,7 @@ function Game() {
   const { playlistId } = useParams<RouteParams>();
   const [gamePlaylist, setGamePlaylist] = useState<Playlist | null>(null);
   const [playGame, setPlayGame] = useState(false);
-  const [trackNumber, setTrackNumber] = useState(-1);
+  const [trackNumber, setTrackNumber] = useState(-2);
   const [artistArray, setArtistArray] = useState<string[]>([]);
   const [choices, setChoices] = useState<string[]>([]);
   const [playedCount, setPlayedCount] = useState(0);
@@ -28,7 +28,7 @@ function Game() {
   }
   
   const tick = () => {
-    if (playedCount > 11) {
+    if (playedCount > gamePlaylist!.data.tracks.items.length) {
       return;
     }
     if (time === 0) {
@@ -54,22 +54,28 @@ function Game() {
   // Function that runs API call
   function loadPlaylist(playlistId:string) {
     findPlaylist(playlistId).then((results) => {
-      const newArtistArray = [];
+      let newArtistArray = [];
       for (let artist of results.data.tracks.items) {
         newArtistArray.push(artist.track.artists[0].name);
       }
+      newArtistArray = _.uniq(newArtistArray)
       setArtistArray(newArtistArray);
+      //filter shuffle then slice then add
+      let newGamePlaylist = []
       let filteredPlaylistArray = results.data.tracks.items.filter(song => song.track.preview_url !== null);
-      results.data.tracks.items = filteredPlaylistArray
+      let shuffledSongArray = _.shuffle(filteredPlaylistArray)
+
+      newGamePlaylist.push(...shuffledSongArray.slice(0,10))
+      results.data.tracks.items = newGamePlaylist
       // Stores API call results in state
       setGamePlaylist(results);
-    });
+    }); 
   }
 
   // Creates random number for index for song in track array
   function generateTrackIndex() {
     setPlayGame(true);
-    let updateTrackNumber = Math.floor(Math.random() * gamePlaylist!.data.tracks.items.length);
+    let updateTrackNumber = trackNumber + 1;
     setTrackNumber(updateTrackNumber);
     generateChoices(updateTrackNumber);
     setPlayedCount(prev => prev + 1);
@@ -77,6 +83,9 @@ function Game() {
 
   function generateChoices(trackNumber: number) {
     if (gamePlaylist === null || trackNumber === -1) {
+      return;
+    }
+    if (trackNumber > gamePlaylist!.data.tracks.items.length - 1) {
       return;
     }
 
@@ -105,31 +114,34 @@ function Game() {
           setAnswerColorChange("Wrong")
         }
 }
-     
-
+  if (!gamePlaylist) {
+    return(
+      <div className="GameLoading">Game is Loading...</div>
+    )
+  }
   return (
     <div className="Game">
-      {gamePlaylist?.data.name}
+      <p>{gamePlaylist?.data.name}</p>
       {playedCount === 0 &&
       <>
-      <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
+      <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`Playlist art for ${gamePlaylist?.data.name}`}/>
       <button onClick={() => generateTrackIndex()}>Play Game</button>
       </>}
       {playedCount === 1 &&
       <>
-      <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
+      <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`Playlist art for ${gamePlaylist?.data.name}`}/>
       <p>Get Ready!</p>
       <p> {time} </p>
       </>
       }
-      {trackNumber > -1 && playedCount <= 11 && playedCount > 1 && 
+      {trackNumber > -1 && playedCount <= gamePlaylist!.data.tracks.items.length + 1 && playedCount > 1 && 
         <div className="GameContainer ">
           <div className="audio-player">
             <div className="track-info">
-              <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`track artwork for ${gamePlaylist?.data.tracks.items[0].track.name} by ${gamePlaylist?.data.tracks.items[0].track.artists[0].name}`}/>
+              <img className="artwork"src={gamePlaylist?.data.images[0].url}alt={`Playlist art for ${gamePlaylist?.data.name}`}/>
                 <p className="Timer">{time}</p>
               <AudioPlayer trackNumber={trackNumber}gamePlaylist={gamePlaylist!} />
-              <p className={"Score " + answerColorChange}> Score: {score} / 10 </p>
+              <p className={"Score " + answerColorChange}> Score: {score} / {gamePlaylist!.data.tracks.items.length} </p>
             </div>
           </div>
           <div className="ArtistChoices">
@@ -140,9 +152,8 @@ function Game() {
           </div>
         </div>
       }
-      {playedCount > 11 && 
-        <PostGame score={score} playlist={gamePlaylist!.data.name} playlistId ={gamePlaylist!.data.id} />
-
+      {playedCount > gamePlaylist!.data.tracks.items.length + 1 && 
+        <PostGame score={score} playlist={gamePlaylist!.data.name} playlistId ={gamePlaylist!.data.id} length={gamePlaylist!.data.tracks.items.length} artwork={gamePlaylist?.data.images[0].url} />
       }
     </div>
   );

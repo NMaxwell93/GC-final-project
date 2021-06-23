@@ -9,9 +9,11 @@ interface Props {
     score: number;
     playlist: string;
     playlistId: string;
+    length: number;
+    artwork: string;
 }
 
-function PostGame({score, playlist, playlistId}: Props) {
+function PostGame({score, playlist, playlistId, length, artwork}: Props) {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
@@ -32,8 +34,8 @@ function PostGame({score, playlist, playlistId}: Props) {
 
     return(
         <div className="PostGame">
-            <p> {playlist} </p>
-            <p>You got {score} out of 10!</p>
+            <img className="artwork"src={artwork}alt={`Playlist art for ${playlist}`}/>
+            <p>You got {score} out of {length}!</p>
             <NavLink to="/"><button className="PlayAgain">Play Again!</button></NavLink>
         </div>
     )
