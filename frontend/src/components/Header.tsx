@@ -29,6 +29,7 @@ function Header() {
     return (
         <div className="Header">
             <NavLink to="/"><img src={logo} alt="logo"></img></NavLink>
+            <NavLink to="/leaderboard"><button className="LeaderboardButton">LeaderBoard</button></NavLink>
             { user && 
                     <div className="Header_user">
                         { !!user.photoURL && <img className="userIMG" src={user.photoURL} alt="" />}
@@ -38,7 +39,7 @@ function Header() {
             }
                     </div> 
             }
-            <NavLink to="/leaderboard"><button className="SignInButton">LeaderBoard</button></NavLink>
+        
             {
                 !user ? 
                     <button className="SignInButton" onClick={signInWithGoogle} >Login</button>

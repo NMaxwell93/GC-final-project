@@ -21,7 +21,7 @@
 }
 
 .Header_user p {
-    height: 0px;
+    height: 10px;
 }
 
 
@@ -51,6 +51,21 @@ img{
     border-radius: 10rem;
 }
 
+.LeaderboardButton {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F2542D;
+    color: white;
+    padding:5px;
+    height: 40px;
+    width: 110px;
+    margin: 3px;
+    outline: 0;
+    text-transform: uppercase;
+    font-size: .7em;
+    cursor: pointer;
+    border-radius: 10rem;
+}
+
 .SignOutButton{
     font-family: 'Montserrat', sans-serif;
     background-color: #F2542D;
@@ -73,6 +88,11 @@ img{
         padding-left: 0px;
         padding-right: 0px;
     }
+
+    .Header_user p {
+        height: 0px;
+    }
+
     img{
         width: 250px;
         float: left;
@@ -90,6 +110,21 @@ img{
         width: auto;
         border-radius: 50%;
         border: 1px solid black;
+    }
+
+    .LeaderboardButton {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #F2542D;
+        color: white;
+        padding:5px;
+        height: 40px;
+        width: 140px;
+        margin: 3px;
+        outline: 0;
+        text-transform: uppercase;
+        font-size: .8em;
+        cursor: pointer;
+        border-radius: 10rem;
     }
 }
 

@@ -45,7 +45,8 @@ function Leaderboard() {
      
     return (
         <div className="Leaderboard">
-            <div>
+            <div className="PlaylistButtonContainer">
+            <div className="LeaderboardPlaylistButtons">
                 <NavLink to="/leaderboard/37i9dQZF1DWSV3Tk4GO2fq"><button>50s Playlist</button></NavLink>
                 <NavLink to="/leaderboard/37i9dQZF1DXaKIA8E7WcJj"><button>60s Playlist</button></NavLink>
                 <NavLink to="/leaderboard/37i9dQZF1DWTJ7xPn4vNaz"><button>70s Playlist</button></NavLink>
@@ -56,14 +57,16 @@ function Leaderboard() {
                 <NavLink to="/leaderboard/1UUCxq5cYwrh9tZNMujWlO"><button>20s Playlist</button></NavLink>
                 <NavLink to="/leaderboard"><button onClick={() => resetLeaderboardTrue()}>Best Overall</button></NavLink>
             </div>
-            <div className="userInputContainer">
+            <div className="userInputContainerLB">
                 <label className="userInput"> See Leaderboard for any Spotify playlist:
                 <input type="text" onChange={(e) => setUserInput(e.target.value.substr(34, 56))} placeholder="Insert Playlist URL" />
                 </label>
                 <div className="userInputSubmit">
                     <NavLink to={`/leaderboard/${userInput}`}><button>Submit</button></NavLink>
                 </div>
+                </div>
             </div>
+          
             
             <h3 className="LeaderboardHeader" style={{display: 'flex', alignItems: 'center',justifyContent: 'center'}}>
             { selectedLeaderboard[0] === undefined ?
