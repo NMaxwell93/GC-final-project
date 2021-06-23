@@ -15,7 +15,7 @@ function Game() {
   const { playlistId } = useParams<RouteParams>();
   const [gamePlaylist, setGamePlaylist] = useState<Playlist | null>(null);
   const [playGame, setPlayGame] = useState(false);
-  const [trackNumber, setTrackNumber] = useState(-1);
+  const [trackNumber, setTrackNumber] = useState(-2);
   const [artistArray, setArtistArray] = useState<string[]>([]);
   const [choices, setChoices] = useState<string[]>([]);
   const [playedCount, setPlayedCount] = useState(0);
@@ -28,12 +28,13 @@ function Game() {
   }
   
   const tick = () => {
-    if (playedCount > 11) {
+    if (playedCount > gamePlaylist!.data.tracks.items.length) {
       return;
     }
     if (time === 0) {
       reset();
       generateTrackIndex();
+      console.log(trackNumber)
     } else {
       setTime(time - 1);
     }
@@ -54,29 +55,40 @@ function Game() {
   // Function that runs API call
   function loadPlaylist(playlistId:string) {
     findPlaylist(playlistId).then((results) => {
-      const newArtistArray = [];
+      let newArtistArray = [];
       for (let artist of results.data.tracks.items) {
         newArtistArray.push(artist.track.artists[0].name);
       }
+      newArtistArray = _.uniq(newArtistArray)
       setArtistArray(newArtistArray);
+      //filter shuffle then slice then add
+      let newGamePlaylist = []
       let filteredPlaylistArray = results.data.tracks.items.filter(song => song.track.preview_url !== null);
-      results.data.tracks.items = filteredPlaylistArray
+      let shuffledSongArray = _.shuffle(filteredPlaylistArray)
+
+      newGamePlaylist.push(...shuffledSongArray.slice(0,10))
+      results.data.tracks.items = newGamePlaylist
       // Stores API call results in state
       setGamePlaylist(results);
-    });
+    }); 
   }
 
   // Creates random number for index for song in track array
   function generateTrackIndex() {
     setPlayGame(true);
-    let updateTrackNumber = Math.floor(Math.random() * gamePlaylist!.data.tracks.items.length);
+    let updateTrackNumber = trackNumber + 1;
     setTrackNumber(updateTrackNumber);
     generateChoices(updateTrackNumber);
     setPlayedCount(prev => prev + 1);
+    console.log(trackNumber)
+    console.log(playedCount + " played count")
   }
 
   function generateChoices(trackNumber: number) {
     if (gamePlaylist === null || trackNumber === -1) {
+      return;
+    }
+    if (trackNumber > 9) {
       return;
     }
 
@@ -122,7 +134,7 @@ function Game() {
       <p> {time} </p>
       </>
       }
-      {trackNumber > -1 && playedCount <= 11 && playedCount > 1 && 
+      {trackNumber > -1 && playedCount <= gamePlaylist!.data.tracks.items.length + 1 && playedCount > 1 && 
         <div className="GameContainer ">
           <div className="audio-player">
             <div className="track-info">
