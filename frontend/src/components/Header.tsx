@@ -29,6 +29,7 @@ function Header() {
     return (
         <div className="Header">
             <NavLink to="/"><img src={logo} alt="logo"></img></NavLink>
+            <div className="Navigation">
             <NavLink to="/leaderboard"><button className="LeaderboardButton">LeaderBoard</button></NavLink>
             { user && 
                     <div className="Header_user">
@@ -46,6 +47,7 @@ function Header() {
                 :
                     <button className="SignOutButton"onClick={signOut} >Logout</button>
             }
+        </div>
         </div>
     )
 }

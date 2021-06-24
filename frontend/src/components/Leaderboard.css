@@ -2,9 +2,8 @@
     text-align: center;
     border: 2px solid black;
     border-radius: 3px;
-    background-color: white;
-    opacity: .75;
     width: 75%;
+    background: rgba(255,255, 255, .75);
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
@@ -42,6 +41,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     height: 200px;
+    margin: 10px;
 }
 
 .userInputContainerLB {
@@ -65,8 +65,6 @@
         text-align: center;
         border: 2px solid black;
         border-radius: 3px;
-        background-color: white;
-        opacity: .75;
         width: 50%;
         margin-left: auto;
         margin-right: auto;
